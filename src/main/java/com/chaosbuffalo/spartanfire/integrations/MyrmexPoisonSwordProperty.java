@@ -1,4 +1,5 @@
 package com.chaosbuffalo.spartanfire.integrations;
+
 import com.oblivioussp.spartanweaponry.api.ToolMaterialEx;
 import com.oblivioussp.spartanweaponry.api.weaponproperty.WeaponPropertyWithCallback;
 import net.minecraft.entity.Entity;

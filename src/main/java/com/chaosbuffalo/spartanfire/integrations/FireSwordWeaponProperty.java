@@ -1,4 +1,5 @@
 package com.chaosbuffalo.spartanfire.integrations;
+
 import com.github.alexthe666.iceandfire.entity.EntityIceDragon;
 import com.oblivioussp.spartanweaponry.api.ToolMaterialEx;
 import com.oblivioussp.spartanweaponry.api.weaponproperty.WeaponPropertyWithCallback;

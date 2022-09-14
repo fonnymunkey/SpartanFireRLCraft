@@ -1,7 +1,6 @@
 package com.chaosbuffalo.spartanfire;
 
 import com.google.gson.JsonObject;
-import com.oblivioussp.spartanweaponry.util.ConfigHandler;
 import net.minecraftforge.common.crafting.IConditionFactory;
 import net.minecraftforge.common.crafting.JsonContext;
 import net.minecraftforge.fml.common.registry.GameRegistry;
