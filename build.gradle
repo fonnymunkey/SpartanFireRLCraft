@@ -1,13 +1,14 @@
 buildscript {
     repositories {
         jcenter()
-        maven { url = "http://files.minecraftforge.net/maven" }
+        maven { url = "http://maven.minecraftforge.net/" }
+		mavenCentral()
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:3.+'
     }
 }
-apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'net.minecraftforge.gradle'
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 
 
@@ -21,12 +22,28 @@ compileJava {
 }
 
 minecraft {
-    version = "${mc_version}-${forge_version}"
-    runDir = "run"
-    
-    mappings = "snapshot_20171003"
-    replace "@VERSION@", project.version
-    replaceIn "SpartanFire.java"
+    mappings channel: 'snapshot', version: '20171003-1.12'
+	
+	runs {
+        client {
+            workingDirectory project.file('run')
+
+            // Recommended logging data for a userdev environment
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+
+            // Recommended logging level for the console
+            property 'forge.logging.console.level', 'debug'
+        }
+
+        server {
+
+            // Recommended logging data for a userdev environment
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+
+            // Recommended logging level for the console
+            property 'forge.logging.console.level', 'debug'
+        }
+    }
 }
 
 repositories {
@@ -41,26 +58,11 @@ repositories {
 }
 
 dependencies {
-    deobfCompile 'ice-and-fire-dragons:iceandfire:1.6.1:1.12.2'
-    deobfCompile "spartan-weaponry:SpartanWeaponry-1.12.2:beta:1.2.3"
-    compile "net.ilexiconn:llibrary:1.7.9-1.12.2:dev"
-}
+	minecraft 'net.minecraftforge:forge:1.12.2-14.23.5.2860'
 
-processResources {
-    // this will ensure that this task is redone when the versions change.
-    inputs.property "version", project.version
-    inputs.property "mcversion", project.minecraft.version
-
-    // replace stuff in mcmod.info, nothing else
-    from(sourceSets.main.resources.srcDirs) {
-        include 'mcmod.info'
-                
-        // replace version and mcversion
-        expand 'version':project.version, 'mcversion':project.minecraft.version
-    }
-        
-    // copy everything else except the mcmod.info
-    from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info'
-    }
+    deobf 'ice-and-fire-dragons:iceandfire:1.7.1:1.12.2'
+    deobf "spartan-weaponry:SpartanWeaponry-1.12.2:beta:1.3.8"
+    compile 'ice-and-fire-dragons:iceandfire:1.7.1:1.12.2'
+    compile "spartan-weaponry:SpartanWeaponry-1.12.2:beta:1.3.8"
+    compile "net.ilexiconn:llibrary:1.7.19-1.12.2:dev"
 }
