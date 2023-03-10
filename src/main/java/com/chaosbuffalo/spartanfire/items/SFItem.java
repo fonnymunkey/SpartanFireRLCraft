@@ -8,7 +8,7 @@ public class SFItem extends Item {
 
     public SFItem(ResourceLocation registryName, CreativeTabs tab){
         setRegistryName(registryName);
-        setUnlocalizedName(registryName.getResourcePath());
+        setTranslationKey(registryName.getPath());
         setCreativeTab(tab);
     }
 }

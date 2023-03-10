@@ -1,10 +1,13 @@
 package com.chaosbuffalo.spartanfire.init;
 
+import com.chaosbuffalo.spartanfire.ForgeConfigHandler;
 import com.chaosbuffalo.spartanfire.IAFMatConverter;
 import com.chaosbuffalo.spartanfire.SpartanFire;
 import com.chaosbuffalo.spartanfire.integrations.*;
 import com.chaosbuffalo.spartanfire.Utils;
 import com.chaosbuffalo.spartanfire.items.SFItem;
+import com.chaosbuffalo.spartanfire.recipes.FireIceThrowingRecipes;
+import com.chaosbuffalo.spartanfire.recipes.VenomThrowingRecipes;
 import com.github.alexthe666.iceandfire.IceAndFire;
 import com.github.alexthe666.iceandfire.core.ModItems;
 import com.oblivioussp.spartanweaponry.api.SpartanWeaponryAPI;
@@ -12,6 +15,7 @@ import com.oblivioussp.spartanweaponry.api.weaponproperty.WeaponProperty;
 import com.oblivioussp.spartanweaponry.util.ConfigHandler;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
@@ -329,6 +333,14 @@ public class ItemRegistrySFire {
             ev.getRegistry().register(it);
         }
         ALL_ITEMS.forEach(ev.getRegistry()::register);
+    }
+
+
+
+    @SubscribeEvent
+    public static void registerRecipeEvent(RegistryEvent.Register<IRecipe> event) {
+        if(ForgeConfigHandler.general.registerFlameIceThrowingRecipes) event.getRegistry().register(new FireIceThrowingRecipes().setRegistryName(new ResourceLocation(SpartanFire.MODID, "fireice_throwing")));
+        if(ForgeConfigHandler.general.registerVenomThrowingRecipes) event.getRegistry().register(new VenomThrowingRecipes().setRegistryName(new ResourceLocation(SpartanFire.MODID, "venom_throwing")));
     }
 
     @SideOnly(Side.CLIENT)
