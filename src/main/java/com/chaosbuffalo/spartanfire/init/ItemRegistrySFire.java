@@ -6,7 +6,7 @@ import com.chaosbuffalo.spartanfire.SpartanFire;
 import com.chaosbuffalo.spartanfire.integrations.*;
 import com.chaosbuffalo.spartanfire.Utils;
 import com.chaosbuffalo.spartanfire.items.SFItem;
-import com.chaosbuffalo.spartanfire.recipes.FireIceThrowingRecipes;
+import com.chaosbuffalo.spartanfire.recipes.FireIceLightningThrowingRecipes;
 import com.chaosbuffalo.spartanfire.recipes.VenomThrowingRecipes;
 import com.github.alexthe666.iceandfire.IceAndFire;
 import com.github.alexthe666.iceandfire.core.ModItems;
@@ -39,6 +39,8 @@ public class ItemRegistrySFire {
     public static final String DRAGONBONE = "dragonbone";
     public static final String FIRE_DRAGONBONE = "fire_dragonbone";
     public static final String ICE_DRAGONBONE = "ice_dragonbone";
+    public static final String LIGHTNING_DRAGONBONE = "lightning_dragonbone";
+
     public static final String JUNGLE = "jungle";
     public static final String JUNGLE_VENOM = "jungle_venom";
     public static final String DESERT = "desert";
@@ -58,6 +60,10 @@ public class ItemRegistrySFire {
                 Utils.spartanMatFromToolMat(ICE_DRAGONBONE, ModItems.iceBoneTools,
                         9867904, 14999238, "ingotDragonbone"),
                 new IceSwordWeaponProperty(ICE_DRAGONBONE, SpartanFire.MODID)));
+        MATERIALS_TO_REGISTER.add(new IAFMatConverter(LIGHTNING_DRAGONBONE,
+                Utils.spartanMatFromToolMat(LIGHTNING_DRAGONBONE, ModItems.lightningBoneTools,
+                        9867904, 14999238, "ingotDragonbone"),
+                new LightningSwordWeaponProperty(LIGHTNING_DRAGONBONE, SpartanFire.MODID)));
         MATERIALS_TO_REGISTER.add(new IAFMatConverter(JUNGLE,
                 Utils.spartanMatFromToolMat(JUNGLE, ModItems.myrmexChitin,
                         9867904, 14999238, "ingotJungleChitin"),
@@ -339,7 +345,7 @@ public class ItemRegistrySFire {
 
     @SubscribeEvent
     public static void registerRecipeEvent(RegistryEvent.Register<IRecipe> event) {
-        if(ForgeConfigHandler.general.registerFlameIceThrowingRecipes) event.getRegistry().register(new FireIceThrowingRecipes().setRegistryName(new ResourceLocation(SpartanFire.MODID, "fireice_throwing")));
+        if(ForgeConfigHandler.general.registerFlameIceThrowingRecipes) event.getRegistry().register(new FireIceLightningThrowingRecipes().setRegistryName(new ResourceLocation(SpartanFire.MODID, "fireice_throwing")));
         if(ForgeConfigHandler.general.registerVenomThrowingRecipes) event.getRegistry().register(new VenomThrowingRecipes().setRegistryName(new ResourceLocation(SpartanFire.MODID, "venom_throwing")));
     }
 

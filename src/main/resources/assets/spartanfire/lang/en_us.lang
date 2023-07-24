@@ -25,6 +25,7 @@ item.spartanfire.quarterstaff_custom.name=%s Quarterstaff
 
 tooltip.spartanfire:fire_dragonbone=Ignites and knocks back targets, deals extra damage to ice dragons
 tooltip.spartanfire:ice_dragonbone=Slows and knocks back targets, deals extra damage to fire dragons
+tooltip.spartanfire:lightning_dragonbone=Strikes targets with lightning, deals extra damage to fire and ice dragons
 tooltip.spartanfire:jungle=+4 damage against non-arthropods and deathworms
 tooltip.spartanfire:desert=+4 damage against non-arthropods and deathworms
 tooltip.spartanfire:jungle_venom=Poisons on hit
@@ -34,6 +35,7 @@ tooltip.spartanfire:desert_venom=Poisons on hit
 material.spartanfire:dragonbone=Dragonbone
 material.spartanfire:fire_dragonbone=Flamed Dragonbone
 material.spartanfire:ice_dragonbone=Iced Dragonbone
+material.spartanfire:lightning_dragonbone=Shocked Dragonbone
 material.spartanfire:desert=Desert Myrmex
 material.spartanfire:jungle=Jungle Myrmex
 material.spartanfire:desert_venom=Desert Myrmex Stinger

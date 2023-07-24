@@ -268,6 +268,8 @@ for weapon in ALL_WEAPONS:
         weapon, weapon, "iceandfire:fire_dragon_blood", "dragonbone", "fire_dragonbone", 0, 0, 0)
     gen_recipe_for_single_item_transform(MOD_NAME, MOD_NAME,
         weapon, weapon, "iceandfire:ice_dragon_blood", "dragonbone", "ice_dragonbone", 0, 0, 0)
+    gen_recipe_for_single_item_transform(MOD_NAME, MOD_NAME,
+        weapon, weapon, "iceandfire:lightning_dragon_blood", "dragonbone", "lightning_dragonbone", 0, 0, 0)
 
 for mat_definition in mats:
     for weapon in ALL_WEAPONS:
