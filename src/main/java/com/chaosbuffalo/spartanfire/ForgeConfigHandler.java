@@ -20,14 +20,14 @@ public class ForgeConfigHandler {
         @Config.RequiresMcRestart
         public boolean registerVenomThrowingRecipes = true;
 
-        @Config.Comment("Registers custom recipe handling for flame/ice throwing weapons")
-        @Config.Name("Register Flame/Ice Throwing Weapon Recipes")
+        @Config.Comment("Registers custom recipe handling for flamed/iced/shocked throwing weapons")
+        @Config.Name("Register Flamed/Iced/Shocked Throwing Weapon Recipes")
         @Config.RequiresMcRestart
-        public boolean registerFlameIceThrowingRecipes = true;
+        public boolean registerFlamedIcedShockedThrowingRecipes = true;
     }
 
     @Mod.EventBusSubscriber(modid = SpartanFire.MODID)
-    private static class EventHandler{
+    private static class EventHandler {
         @SubscribeEvent
         public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
             if(event.getModID().equals(SpartanFire.MODID)) {

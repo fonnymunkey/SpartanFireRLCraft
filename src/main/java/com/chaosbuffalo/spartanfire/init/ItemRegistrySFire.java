@@ -345,7 +345,7 @@ public class ItemRegistrySFire {
 
     @SubscribeEvent
     public static void registerRecipeEvent(RegistryEvent.Register<IRecipe> event) {
-        if(ForgeConfigHandler.general.registerFlameIceThrowingRecipes) event.getRegistry().register(new FireIceLightningThrowingRecipes().setRegistryName(new ResourceLocation(SpartanFire.MODID, "fireice_throwing")));
+        if(ForgeConfigHandler.general.registerFlamedIcedShockedThrowingRecipes) event.getRegistry().register(new FireIceLightningThrowingRecipes().setRegistryName(new ResourceLocation(SpartanFire.MODID, "fireice_throwing")));
         if(ForgeConfigHandler.general.registerVenomThrowingRecipes) event.getRegistry().register(new VenomThrowingRecipes().setRegistryName(new ResourceLocation(SpartanFire.MODID, "venom_throwing")));
     }
 

@@ -20,7 +20,7 @@ public class LightningSwordWeaponProperty extends WeaponPropertyWithCallback {
         if (target instanceof EntityFireDragon || target instanceof EntityIceDragon) {
             target.attackEntityFrom(DamageSource.LIGHTNING_BOLT, 6.75F);
         }
-        ChainLightningHelper.createChainLightningFromTarget(target.world, stack, target);
+        ChainLightningHelper.createChainLightningFromTarget(target.world, target, attacker);
         target.knockBack(target, 1F, attacker.posX - target.posX, attacker.posZ - target.posZ);
     }
 }
