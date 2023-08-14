@@ -1,8 +1,8 @@
 package com.chaosbuffalo.spartanfire.integrations;
 
+import com.github.alexthe666.iceandfire.api.ChainLightningUtils;
 import com.github.alexthe666.iceandfire.entity.EntityFireDragon;
 import com.github.alexthe666.iceandfire.entity.EntityIceDragon;
-import com.github.alexthe666.iceandfire.util.ChainLightningHelper;
 import com.oblivioussp.spartanweaponry.api.ToolMaterialEx;
 import com.oblivioussp.spartanweaponry.api.weaponproperty.WeaponPropertyWithCallback;
 import net.minecraft.entity.Entity;
@@ -20,7 +20,7 @@ public class LightningSwordWeaponProperty extends WeaponPropertyWithCallback {
         if (target instanceof EntityFireDragon || target instanceof EntityIceDragon) {
             target.attackEntityFrom(DamageSource.LIGHTNING_BOLT, 6.75F);
         }
-        ChainLightningHelper.createChainLightningFromTarget(target.world, target, attacker);
+        ChainLightningUtils.createChainLightningFromTarget(target.world, target, attacker);
         target.knockBack(target, 1F, attacker.posX - target.posX, attacker.posZ - target.posZ);
     }
 }
