@@ -1,1 +1,14 @@
-{"textures": {"layer0": "spartanfire:items/javelin_lightning_dragon"}, "parent": "spartanweaponry:item/javelin_wood"}
+{
+  "parent": "spartanweaponry:item/javelin_wood",
+  "textures": {
+    "layer0": "spartanfire:items/javelin_lightning_dragon"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "empty": 1
+      },
+      "model": "spartanweaponry:item/javelin_empty"
+    }
+  ]
+}

@@ -28,15 +28,8 @@ junglePoisonMat = MatDefinition('jungle_venom',
     [])
 junglePoisonMat.replace_tip = True
 junglePoisonMat.tip_entry = {"item": "iceandfire:myrmex_stinger", "data": 0}
-iceDragonSteelMat = MatDefinition('ice_dragonsteel',
-  {"type": "forge:ore_dict", "ore": "ingotIceDragonsteel"},
-  [])
-fireDragonSteelMat = MatDefinition('fire_dragonsteel',
-  {"type": "forge:ore_dict", "ore": "ingotFireDragonsteel"},
-  [])
 
-mats = [dragonMat, desertMat, jungleMat, desertPoisonMat, junglePoisonMat,
-        iceDragonSteelMat, fireDragonSteelMat]
+mats = [dragonMat, desertMat, jungleMat, desertPoisonMat, junglePoisonMat]
 
 class RecipePattern(object):
 

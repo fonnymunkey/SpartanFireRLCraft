@@ -1,1 +1,14 @@
-{"textures": {"layer0": "spartanfire:items/throwing_axe_lightning_dragon"}, "parent": "spartanweaponry:item/throwing_axe_wood"}
+{
+  "parent": "spartanweaponry:item/throwing_axe_wood",
+  "textures": {
+    "layer0": "spartanfire:items/throwing_axe_lightning_dragon"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "empty": 1
+      },
+      "model": "spartanweaponry:item/throwing_axe_empty"
+    }
+  ]
+}

@@ -1,9 +1,8 @@
 import json
 
 mat_names = [('dragonbone', 'dragon'), ('fire_dragonbone', 'fire_dragon'), ('ice_dragonbone', 'ice_dragon'),
-    ('desert', 'desert'), ('desert_venom', 'desert_venom'), ('jungle', 'jungle'),
-    ('jungle_venom', 'jungle_venom'), ('fire_dragonsteel', 'dragonsteel_fire'),
-    ('ice_dragonsteel', 'dragonsteel_ice')]
+    ('lightning_dragonbone', 'lightning_dragon'), ('desert', 'desert'), ('desert_venom', 'desert_venom'),
+    ('jungle', 'jungle'), ('jungle_venom', 'jungle_venom')]
 
 def gen_simple_item_model(mat_name, weapon_name, mod_name, texture_name):
     gen_dict = {
