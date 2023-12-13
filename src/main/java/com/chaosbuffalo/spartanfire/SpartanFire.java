@@ -11,7 +11,7 @@ public class SpartanFire
 {
     public static final String MODID = "spartanfire";
     public static final String NAME = "Spartan Fire";
-    public static final String VERSION = "1.1.0";
+    public static final String VERSION = "1.2.0";
 
     private static Logger logger;
 
