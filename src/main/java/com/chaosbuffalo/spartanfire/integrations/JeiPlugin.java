@@ -11,7 +11,7 @@ public class JeiPlugin implements IModPlugin {
 
     @Override
     public void register(IModRegistry registry) {
-        if(ForgeConfigHandler.general.registerFlameIceThrowingRecipes) registry.addRecipes(FireIceThrowingRecipeMaker.getFireIceThrowingRecipes(), VanillaRecipeCategoryUid.CRAFTING);
+        if(ForgeConfigHandler.general.registerFlamedIcedShockedThrowingRecipes) registry.addRecipes(FireIceLightningThrowingRecipeMaker.getFireIceLightningThrowingRecipes(), VanillaRecipeCategoryUid.CRAFTING);
         if(ForgeConfigHandler.general.registerVenomThrowingRecipes) registry.addRecipes(VenomThrowingRecipeMaker.getVenomThrowingRecipes(), VanillaRecipeCategoryUid.CRAFTING);
     }
 }

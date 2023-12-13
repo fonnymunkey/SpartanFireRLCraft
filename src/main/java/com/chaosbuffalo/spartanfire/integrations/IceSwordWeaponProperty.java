@@ -1,10 +1,10 @@
 package com.chaosbuffalo.spartanfire.integrations;
 
+import com.github.alexthe666.iceandfire.api.IEntityEffectCapability;
+import com.github.alexthe666.iceandfire.api.InFCapabilities;
 import com.github.alexthe666.iceandfire.entity.EntityFireDragon;
-import com.github.alexthe666.iceandfire.entity.FrozenEntityProperties;
 import com.oblivioussp.spartanweaponry.api.ToolMaterialEx;
 import com.oblivioussp.spartanweaponry.api.weaponproperty.WeaponPropertyWithCallback;
-import net.ilexiconn.llibrary.server.entity.EntityPropertiesHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.MobEffects;
@@ -22,8 +22,8 @@ public class IceSwordWeaponProperty extends WeaponPropertyWithCallback {
         if (target instanceof EntityFireDragon) {
             target.attackEntityFrom(DamageSource.DROWN, 13.5F);
         }
-        FrozenEntityProperties frozenProps = EntityPropertiesHandler.INSTANCE.getProperties(target, FrozenEntityProperties.class);
-        frozenProps.setFrozenFor(200);
+        IEntityEffectCapability capability = InFCapabilities.getEntityEffectCapability(target);
+        capability.setFrozen(200);
         target.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 100, 2));
         target.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 100, 2));
         target.knockBack(target, 1F, attacker.posX - target.posX, attacker.posZ - target.posZ);

@@ -11,14 +11,17 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import javax.annotation.Nullable;
 import java.util.*;
-public class FireIceThrowingRecipes extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
+public class FireIceLightningThrowingRecipes extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
     private static final Map<Item, Item> weaponMapFire;
     private static final Map<Item, Item> weaponMapIce;
+    private static final Map<Item, Item> weaponMapLightning;
+
 
     // :(
     static {
         Map<Item, Item> tempFireMap = new HashMap<>();
         Map<Item, Item> tempIceMap = new HashMap<>();
+        Map<Item, Item> tempLightningMap = new HashMap<>();
 
         tempFireMap.put(Item.getByNameOrId("spartanfire:throwing_axe_dragonbone"), Item.getByNameOrId("spartanfire:throwing_axe_fire_dragonbone"));
         tempFireMap.put(Item.getByNameOrId("spartanfire:throwing_knife_dragonbone"), Item.getByNameOrId("spartanfire:throwing_knife_fire_dragonbone"));
@@ -30,8 +33,14 @@ public class FireIceThrowingRecipes extends IForgeRegistryEntry.Impl<IRecipe> im
         tempIceMap.put(Item.getByNameOrId("spartanfire:javelin_dragonbone"), Item.getByNameOrId("spartanfire:javelin_ice_dragonbone"));
         tempIceMap.put(Item.getByNameOrId("spartanfire:boomerang_dragonbone"), Item.getByNameOrId("spartanfire:boomerang_ice_dragonbone"));
 
+        tempLightningMap.put(Item.getByNameOrId("spartanfire:throwing_axe_dragonbone"), Item.getByNameOrId("spartanfire:throwing_axe_lightning_dragonbone"));
+        tempLightningMap.put(Item.getByNameOrId("spartanfire:throwing_knife_dragonbone"), Item.getByNameOrId("spartanfire:throwing_knife_lightning_dragonbone"));
+        tempLightningMap.put(Item.getByNameOrId("spartanfire:javelin_dragonbone"), Item.getByNameOrId("spartanfire:javelin_lightning_dragonbone"));
+        tempLightningMap.put(Item.getByNameOrId("spartanfire:boomerang_dragonbone"), Item.getByNameOrId("spartanfire:boomerang_lightning_dragonbone"));
+
         weaponMapFire = Collections.unmodifiableMap(tempFireMap);
         weaponMapIce = Collections.unmodifiableMap(tempIceMap);
+        weaponMapLightning = Collections.unmodifiableMap(tempLightningMap);
     }
 
     @Override
@@ -43,11 +52,13 @@ public class FireIceThrowingRecipes extends IForgeRegistryEntry.Impl<IRecipe> im
         if(slots==null) return ItemStack.EMPTY;
 
         ItemStack stackInput = inv.getStackInSlot(slots[1]);
-        ItemStack output;
-        if(inv.getStackInSlot(slots[0]).getItem() == ModItems.fire_dragon_blood) output = new ItemStack(weaponMapFire.get(stackInput.getItem()));
-        else output = new ItemStack(weaponMapIce.get(stackInput.getItem()));
-
-        return output;
+        Item item = inv.getStackInSlot(slots[0]).getItem();
+        if (item == ModItems.ice_dragon_blood) {
+            return new ItemStack(weaponMapIce.get(stackInput.getItem()));
+        } else if (item == ModItems.lightning_dragon_blood) {
+            return new ItemStack(weaponMapLightning.get(stackInput.getItem()));
+        }
+        return new ItemStack(weaponMapFire.get(stackInput.getItem()));
     }
 
     @Override
@@ -78,7 +89,7 @@ public class FireIceThrowingRecipes extends IForgeRegistryEntry.Impl<IRecipe> im
         for(int i : occupiedSlots) {
             ItemStack itemStack = inv.getStackInSlot(i);
 
-            if(itemStack.getItem() == ModItems.fire_dragon_blood || itemStack.getItem() == ModItems.ice_dragon_blood) bloodSlot = i;
+            if(itemStack.getItem() == ModItems.fire_dragon_blood || itemStack.getItem() == ModItems.ice_dragon_blood || itemStack.getItem() == ModItems.lightning_dragon_blood) bloodSlot = i;
             else if(weaponMapFire.containsKey(itemStack.getItem()) && !itemStack.isItemDamaged()){//Shouldn't really need to check both maps, since everything will be in both maps
                 NBTTagCompound compound = itemStack.getTagCompound();
                 if(compound == null || compound.getByte("Original") != 1) return null;//Fix duping ammo
