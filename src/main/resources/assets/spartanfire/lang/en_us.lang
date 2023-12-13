@@ -1,4 +1,4 @@
-#Items
+# Items
 item.spartanfire:ingot_custom.name=%s Ingot
 item.spartanfire:dagger_custom.name=%s Dagger
 item.spartanfire:parrying_dagger_custom.name=%s Parrying Dagger
@@ -31,7 +31,7 @@ tooltip.spartanfire:desert=+4 damage against non-arthropods and deathworms
 tooltip.spartanfire:jungle_venom=Poisons on hit
 tooltip.spartanfire:desert_venom=Poisons on hit
 
-#Materials
+# Materials
 material.spartanfire:dragonbone=Dragonbone
 material.spartanfire:fire_dragonbone=Flamed Dragonbone
 material.spartanfire:ice_dragonbone=Iced Dragonbone
@@ -41,6 +41,12 @@ material.spartanfire:jungle=Jungle Myrmex
 material.spartanfire:desert_venom=Desert Myrmex Stinger
 material.spartanfire:jungle_venom=Jungle Myrmex Stinger
 
-
+# Config
+config.spartanfire.general=General Options
+config.spartanfire.general.tooltip=General Config Options
+config.spartanfire.general.registerVenomThrowingRecipes=Register Venom Throwing Weapon Recipes
+config.spartanfire.general.registerVenomThrowingRecipes.tooltip=Registers custom recipe handling for venom throwing weapons
+config.spartanfire.general.registerFlamedIcedShockedThrowingRecipes=Register Flamed/Iced/Shocked Throwing Weapon Recipes
+config.spartanfire.general.registerFlamedIcedShockedThrowingRecipes.tooltip=Registers custom recipe handling for flamed/iced/shocked throwing weapons
 
 

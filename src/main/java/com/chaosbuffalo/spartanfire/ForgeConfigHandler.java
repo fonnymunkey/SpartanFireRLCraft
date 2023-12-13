@@ -11,17 +11,20 @@ public class ForgeConfigHandler {
 
     @Config.Comment("General Config Options")
     @Config.Name("General Options")
+    @Config.LangKey("config.spartanfire.general")
     public static final GeneralConfig general = new GeneralConfig();
 
     public static class GeneralConfig {
 
         @Config.Comment("Registers custom recipe handling for venom throwing weapons")
         @Config.Name("Register Venom Throwing Weapon Recipes")
+        @Config.LangKey("config.spartanfire.general.registerVenomThrowingRecipes")
         @Config.RequiresMcRestart
         public boolean registerVenomThrowingRecipes = true;
 
         @Config.Comment("Registers custom recipe handling for flamed/iced/shocked throwing weapons")
         @Config.Name("Register Flamed/Iced/Shocked Throwing Weapon Recipes")
+        @Config.LangKey("config.spartanfire.general.registerFlamedIcedShockedThrowingRecipes")
         @Config.RequiresMcRestart
         public boolean registerFlamedIcedShockedThrowingRecipes = true;
     }
