@@ -65,6 +65,11 @@ patterns["katana"] = RecipePattern(
      " i ", 
      "h  "], 
     HAFT_ENTRY, (0, 2))
+patterns["scythe"] = RecipePattern(
+    ["ii ",
+     "  i",
+     " p "],
+    POLE_ENTRY, (0, 2))
 patterns["greatsword"] = RecipePattern(
     [" i ",
      "iii", 
@@ -227,7 +232,7 @@ def gen_replace_tip_recipe_for_weapon(weapon_name, mat_definition, pattern, mod_
 
 MOD_NAME = "spartanfire"
 
-ALL_WEAPONS = ['katana', 'greatsword', 'longsword', 'saber', 'rapier',
+ALL_WEAPONS = ['katana', 'scythe', 'greatsword', 'longsword', 'saber', 'rapier',
                 'spear', 'dagger', 'pike', 'lance', 'halberd', 'warhammer',
                 'throwing_axe', 'hammer', 'throwing_knife', 'longbow',
                 'crossbow', 'javelin', 'battleaxe', 'mace', 'boomerang',
