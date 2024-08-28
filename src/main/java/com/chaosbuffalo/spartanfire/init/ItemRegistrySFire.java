@@ -116,6 +116,17 @@ public class ItemRegistrySFire {
                         "katana_" + mat.material.getUnlocName());
                 item_set.add(katana);
             }
+            if (!ConfigHandler.disableScythe){
+                Item scythe = SpartanWeaponryAPI.createScythe(
+                        mat.material,
+                        SpartanFire.MODID,
+                        IceAndFire.TAB,
+                        mat.properties.toArray(new WeaponProperty[0])
+                );
+                ModelRenderRegistrySFire.addItemToRegistry(scythe,
+                        "scythe_" + mat.material.getUnlocName());
+                item_set.add(scythe);
+            }
             if (!ConfigHandler.disableGreatsword){
                 Item greatsword = SpartanWeaponryAPI.createGreatsword(
                         mat.material,

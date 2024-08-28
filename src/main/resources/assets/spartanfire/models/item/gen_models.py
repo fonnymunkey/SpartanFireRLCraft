@@ -149,6 +149,7 @@ MOD_NAME = "spartanfire"
 
 for mat_name, texture_name in mat_names:
     gen_simple_item_model(mat_name, "katana", MOD_NAME, texture_name)
+    gen_simple_item_model(mat_name, "scythe", MOD_NAME, texture_name)
     gen_simple_item_model(mat_name, "boomerang", MOD_NAME, texture_name)
     gen_simple_item_model(mat_name, "dagger", MOD_NAME, texture_name)
     gen_simple_item_model(mat_name, "greatsword", MOD_NAME, texture_name)
