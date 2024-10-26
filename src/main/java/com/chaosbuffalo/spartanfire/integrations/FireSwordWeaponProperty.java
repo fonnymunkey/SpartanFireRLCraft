@@ -14,11 +14,13 @@ public class FireSwordWeaponProperty extends WeaponPropertyWithCallback {
         super(propType, propModId);
     }
 
-    public void onHitEntity(ToolMaterialEx material, ItemStack stack, EntityLivingBase target, EntityLivingBase attacker, Entity projectile) {
+    public float modifyDamageDealt(ToolMaterialEx material, float baseDamage, float initialDamage, DamageSource source, EntityLivingBase attacker, EntityLivingBase target) {
+        float mod = 0.0F;
         if (target instanceof EntityIceDragon) {
-            target.attackEntityFrom(DamageSource.IN_FIRE, 13.5F);
+            mod += 13.5F;
         }
         target.setFire(5);
         target.knockBack(target, 1F, attacker.posX - target.posX, attacker.posZ - target.posZ);
+        return baseDamage + mod;
     }
 }

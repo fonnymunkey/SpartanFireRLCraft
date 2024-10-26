@@ -7,6 +7,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.DamageSource;
 
 
 public class MyrmexPoisonSwordProperty extends WeaponPropertyWithCallback {
@@ -15,8 +16,9 @@ public class MyrmexPoisonSwordProperty extends WeaponPropertyWithCallback {
         super(propType, propModId);
     }
 
-    public void onHitEntity(ToolMaterialEx material, ItemStack stack, EntityLivingBase target, EntityLivingBase attacker, Entity projectile) {
+    public float modifyDamageDealt(ToolMaterialEx material, float baseDamage, float initialDamage, DamageSource source, EntityLivingBase attacker, EntityLivingBase target) {
         target.addPotionEffect(new PotionEffect(MobEffects.POISON, 200, 2));
+        return baseDamage;
     }
 }
 

@@ -14,11 +14,11 @@ public class MyrmexSwordProperty extends WeaponPropertyWithCallback {
         super(propType, propModId);
     }
 
-    public float modifyDamageDealt(ToolMaterialEx material, float baseDamage, float initialDamage, DamageSource source, EntityLivingBase attacker, EntityLivingBase victim) {
-        if (victim.getCreatureAttribute() != EnumCreatureAttribute.ARTHROPOD) {
+    public float modifyDamageDealt(ToolMaterialEx material, float baseDamage, float initialDamage, DamageSource source, EntityLivingBase attacker, EntityLivingBase target) {
+        if (target.getCreatureAttribute() != EnumCreatureAttribute.ARTHROPOD) {
             return baseDamage + 4;
         }
-        if (victim instanceof EntityDeathWorm) {
+        if (target instanceof EntityDeathWorm) {
             return baseDamage + 4;
         }
         return baseDamage;

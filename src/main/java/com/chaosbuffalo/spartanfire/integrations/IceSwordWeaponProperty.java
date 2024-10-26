@@ -18,14 +18,16 @@ public class IceSwordWeaponProperty extends WeaponPropertyWithCallback {
         super(propType, propModId);
     }
 
-    public void onHitEntity(ToolMaterialEx material, ItemStack stack, EntityLivingBase target, EntityLivingBase attacker, Entity projectile) {
+    public float modifyDamageDealt(ToolMaterialEx material, float baseDamage, float initialDamage, DamageSource source, EntityLivingBase attacker, EntityLivingBase target) {
+        float mod = 0.0F;
         if (target instanceof EntityFireDragon) {
-            target.attackEntityFrom(DamageSource.DROWN, 13.5F);
+            mod += 13.5F;
         }
         IEntityEffectCapability capability = InFCapabilities.getEntityEffectCapability(target);
         capability.setFrozen(200);
         target.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 100, 2));
         target.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 100, 2));
         target.knockBack(target, 1F, attacker.posX - target.posX, attacker.posZ - target.posZ);
+        return baseDamage + mod;
     }
 }
