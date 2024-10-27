@@ -42,6 +42,7 @@ dependencies {
     implementation fg.deobf("curse.maven:llibrary-${llibrary_version}")
     implementation fg.deobf("curse.maven:icenfire-${icenfire_version}")
     implementation fg.deobf("curse.maven:spartanweaponry-${spartanweaponry_version}")
+    implementation fg.deobf("curse.maven:rlcombat-${rlcombat_version}")
 
     compileOnly fg.deobf("mezz.jei:jei_${minecraft_version}:${jei_version}:api")
     runtimeOnly fg.deobf("mezz.jei:jei_${minecraft_version}:${jei_version}")
