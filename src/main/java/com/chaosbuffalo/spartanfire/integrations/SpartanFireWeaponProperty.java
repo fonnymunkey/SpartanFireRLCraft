@@ -12,7 +12,7 @@ public abstract class SpartanFireWeaponProperty extends WeaponPropertyWithCallba
     }
 
     public float modifyDamageDealt(ToolMaterialEx material, float baseDamage, float initialDamage, DamageSource source, EntityLivingBase attacker, EntityLivingBase target) {
-        if (CompatLoadUtil.isRLCombatLoaded()) return baseDamage;
+        if (!source.isProjectile() && CompatLoadUtil.isRLCombatLoaded()) return baseDamage;
         return baseDamage + getHitEffectModifier(target, attacker);
     }
 
