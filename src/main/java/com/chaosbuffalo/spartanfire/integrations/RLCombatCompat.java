@@ -3,6 +3,7 @@ package com.chaosbuffalo.spartanfire.integrations;
 import bettercombat.mod.event.RLCombatModifyDamageEvent;
 import com.oblivioussp.spartanweaponry.api.weaponproperty.WeaponProperty;
 import com.oblivioussp.spartanweaponry.item.ItemSwordBase;
+import com.oblivioussp.spartanweaponry.item.ItemThrowingWeapon;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -19,10 +20,16 @@ public class RLCombatCompat {
         Entity target = event.getTarget();
         if (player == null || !(target instanceof EntityLivingBase) || event.getStack().isEmpty()) return;
         Item item = event.getStack().getItem();
-        if (item instanceof ItemSwordBase) {
+        if (item instanceof ItemSwordBase || item instanceof ItemThrowingWeapon) {
             float mod = 0F;
 
-            List<WeaponProperty> properties = ((ItemSwordBase) item).getAllWeaponProperties();
+            List<WeaponProperty> properties;
+            if (item instanceof ItemSwordBase) {
+                properties = ((ItemSwordBase) item).getAllWeaponProperties();
+            } else {
+                properties = ((ItemThrowingWeapon) item).getAllWeaponProperties();
+            }
+
             for (WeaponProperty property : properties) {
                 if (property instanceof SpartanFireWeaponProperty) {
                     mod += ((SpartanFireWeaponProperty) property).getHitEffectModifier((EntityLivingBase)target, player);
