@@ -99,9 +99,9 @@ public class ItemRegistrySFire {
 
         Set<Item> item_set = new LinkedHashSet<>();
         Item witherboneHandle = new SFItem(new ResourceLocation(SpartanFire.MODID, "witherbone_handle"),
-                IceAndFire.TAB);
+                IceAndFire.TAB_ITEMS);
         Item witherbonePole = new SFItem(new ResourceLocation(SpartanFire.MODID, "witherbone_pole"),
-                IceAndFire.TAB);
+                IceAndFire.TAB_ITEMS);
         ALL_ITEMS.add(witherboneHandle);
         ALL_ITEMS.add(witherbonePole);
         for (IAFMatConverter mat : MATERIALS_TO_REGISTER){
@@ -109,7 +109,7 @@ public class ItemRegistrySFire {
                 Item katana = SpartanWeaponryAPI.createKatana(
                         mat.material,
                         SpartanFire.MODID,
-                        IceAndFire.TAB,
+                        IceAndFire.TAB_ITEMS,
                         mat.properties.toArray(new WeaponProperty[0])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(katana,
@@ -120,7 +120,7 @@ public class ItemRegistrySFire {
                 Item scythe = SpartanWeaponryAPI.createScythe(
                         mat.material,
                         SpartanFire.MODID,
-                        IceAndFire.TAB,
+                        IceAndFire.TAB_ITEMS,
                         mat.properties.toArray(new WeaponProperty[0])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(scythe,
@@ -131,7 +131,7 @@ public class ItemRegistrySFire {
                 Item greatsword = SpartanWeaponryAPI.createGreatsword(
                         mat.material,
                         SpartanFire.MODID,
-                        IceAndFire.TAB,
+                        IceAndFire.TAB_ITEMS,
                         mat.properties.toArray(new WeaponProperty[0])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(greatsword, "greatsword_" + mat.material.getUnlocName());
@@ -141,7 +141,7 @@ public class ItemRegistrySFire {
                 Item longsword = SpartanWeaponryAPI.createLongsword(
                         mat.material,
                         SpartanFire.MODID,
-                        IceAndFire.TAB,
+                        IceAndFire.TAB_ITEMS,
                         mat.properties.toArray(new WeaponProperty[0])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(longsword, "longsword_" + mat.material.getUnlocName());
@@ -151,7 +151,7 @@ public class ItemRegistrySFire {
                 Item saber = SpartanWeaponryAPI.createSaber(
                         mat.material,
                         SpartanFire.MODID,
-                        IceAndFire.TAB,
+                        IceAndFire.TAB_ITEMS,
                         mat.properties.toArray(new WeaponProperty[0])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(saber, "saber_" + mat.material.getUnlocName());
@@ -161,7 +161,7 @@ public class ItemRegistrySFire {
                 Item rapier = SpartanWeaponryAPI.createRapier(
                         mat.material,
                         SpartanFire.MODID,
-                        IceAndFire.TAB,
+                        IceAndFire.TAB_ITEMS,
                         mat.properties.toArray(new WeaponProperty[0])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(rapier, "rapier_" + mat.material.getUnlocName());
@@ -171,7 +171,7 @@ public class ItemRegistrySFire {
                 Item dagger = SpartanWeaponryAPI.createDagger(
                         mat.material,
                         SpartanFire.MODID,
-                        IceAndFire.TAB,
+                        IceAndFire.TAB_ITEMS,
                         mat.properties.toArray(new WeaponProperty[0])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(dagger,"dagger_" + mat.material.getUnlocName());
@@ -181,7 +181,7 @@ public class ItemRegistrySFire {
                 Item spear = SpartanWeaponryAPI.createSpear(
                         mat.material,
                         SpartanFire.MODID,
-                        IceAndFire.TAB,
+                        IceAndFire.TAB_ITEMS,
                         mat.properties.toArray(new WeaponProperty[0])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(spear,"spear_" + mat.material.getUnlocName());
@@ -191,7 +191,7 @@ public class ItemRegistrySFire {
                 Item pike = SpartanWeaponryAPI.createPike(
                         mat.material,
                         SpartanFire.MODID,
-                        IceAndFire.TAB,
+                        IceAndFire.TAB_ITEMS,
                         mat.properties.toArray(new WeaponProperty[0])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(pike, "pike_" + mat.material.getUnlocName());
@@ -201,7 +201,7 @@ public class ItemRegistrySFire {
                 Item lance = SpartanWeaponryAPI.createLance(
                         mat.material,
                         SpartanFire.MODID,
-                        IceAndFire.TAB,
+                        IceAndFire.TAB_ITEMS,
                         mat.properties.toArray(new WeaponProperty[0])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(lance, "lance_" + mat.material.getUnlocName());
@@ -211,7 +211,7 @@ public class ItemRegistrySFire {
                 Item halberd = SpartanWeaponryAPI.createHalberd(
                         mat.material,
                         SpartanFire.MODID,
-                        IceAndFire.TAB,
+                        IceAndFire.TAB_ITEMS,
                         mat.properties.toArray(new WeaponProperty[0])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(halberd, "halberd_" + mat.material.getUnlocName());
@@ -221,7 +221,7 @@ public class ItemRegistrySFire {
                 Item warhammer = SpartanWeaponryAPI.createWarhammer(
                         mat.material,
                         SpartanFire.MODID,
-                        IceAndFire.TAB,
+                        IceAndFire.TAB_ITEMS,
                         mat.properties.toArray(new WeaponProperty[0])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(warhammer, "warhammer_" + mat.material.getUnlocName());
@@ -231,7 +231,7 @@ public class ItemRegistrySFire {
                 Item hammer = SpartanWeaponryAPI.createHammer(
                         mat.material,
                         SpartanFire.MODID,
-                        IceAndFire.TAB,
+                        IceAndFire.TAB_ITEMS,
                         mat.properties.toArray(new WeaponProperty[0])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(hammer,"hammer_" + mat.material.getUnlocName());
@@ -241,7 +241,7 @@ public class ItemRegistrySFire {
                 Item throwing_axe = SpartanWeaponryAPI.createThrowingAxe(
                         mat.material,
                         SpartanFire.MODID,
-                        IceAndFire.TAB,
+                        IceAndFire.TAB_ITEMS,
                         mat.properties.toArray(new WeaponProperty[0])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(throwing_axe,
@@ -252,7 +252,7 @@ public class ItemRegistrySFire {
                 Item throwing_knife = SpartanWeaponryAPI.createThrowingKnife(
                         mat.material,
                         SpartanFire.MODID,
-                        IceAndFire.TAB,
+                        IceAndFire.TAB_ITEMS,
                         mat.properties.toArray(new WeaponProperty[0])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(throwing_knife,
@@ -263,7 +263,7 @@ public class ItemRegistrySFire {
                 Item longbow = SpartanWeaponryAPI.createLongbow(
                         mat.material,
                         SpartanFire.MODID,
-                        IceAndFire.TAB,
+                        IceAndFire.TAB_ITEMS,
                         null
                 );
 
@@ -274,7 +274,7 @@ public class ItemRegistrySFire {
                 Item crossbow = SpartanWeaponryAPI.createCrossbow(
                         mat.material,
                         SpartanFire.MODID,
-                        IceAndFire.TAB,
+                        IceAndFire.TAB_ITEMS,
                         null
                 );
 
@@ -285,7 +285,7 @@ public class ItemRegistrySFire {
                 Item javelin = SpartanWeaponryAPI.createJavelin(
                         mat.material,
                         SpartanFire.MODID,
-                        IceAndFire.TAB,
+                        IceAndFire.TAB_ITEMS,
                         mat.properties.toArray(new WeaponProperty[0])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(javelin,"javelin_" + mat.material.getUnlocName());
@@ -295,7 +295,7 @@ public class ItemRegistrySFire {
                 Item battleaxe = SpartanWeaponryAPI.createBattleaxe(
                         mat.material,
                         SpartanFire.MODID,
-                        IceAndFire.TAB,
+                        IceAndFire.TAB_ITEMS,
                         mat.properties.toArray(new WeaponProperty[0])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(battleaxe, "battleaxe_" + mat.material.getUnlocName());
@@ -305,7 +305,7 @@ public class ItemRegistrySFire {
                 Item boomerang = SpartanWeaponryAPI.createBoomerang(
                         mat.material,
                         SpartanFire.MODID,
-                        IceAndFire.TAB,
+                        IceAndFire.TAB_ITEMS,
                         mat.properties.toArray(new WeaponProperty[0])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(boomerang,
@@ -316,7 +316,7 @@ public class ItemRegistrySFire {
                 Item mace = SpartanWeaponryAPI.createMace(
                         mat.material,
                         SpartanFire.MODID,
-                        IceAndFire.TAB,
+                        IceAndFire.TAB_ITEMS,
                         mat.properties.toArray(new WeaponProperty[0])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(mace, "mace_" + mat.material.getUnlocName());
@@ -326,7 +326,7 @@ public class ItemRegistrySFire {
                 Item quarterstaff = SpartanWeaponryAPI.createQuarterstaff(
                         mat.material,
                         SpartanFire.MODID,
-                        IceAndFire.TAB,
+                        IceAndFire.TAB_ITEMS,
                         mat.properties.toArray(new WeaponProperty[0])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(quarterstaff, "staff_" + mat.material.getUnlocName());
@@ -336,7 +336,7 @@ public class ItemRegistrySFire {
                 Item glaive = SpartanWeaponryAPI.createGlaive(
                         mat.material,
                         SpartanFire.MODID,
-                        IceAndFire.TAB,
+                        IceAndFire.TAB_ITEMS,
                         mat.properties.toArray(new WeaponProperty[0])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(glaive, "glaive_" + mat.material.getUnlocName());
