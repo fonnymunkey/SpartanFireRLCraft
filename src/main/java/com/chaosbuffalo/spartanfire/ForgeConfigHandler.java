@@ -21,12 +21,6 @@ public class ForgeConfigHandler {
         @Config.LangKey("config.spartanfire.general.registerVenomThrowingRecipes")
         @Config.RequiresMcRestart
         public boolean registerVenomThrowingRecipes = true;
-
-        @Config.Comment("Registers custom recipe handling for flamed/iced/shocked throwing weapons")
-        @Config.Name("Register Flamed/Iced/Shocked Throwing Weapon Recipes")
-        @Config.LangKey("config.spartanfire.general.registerFlamedIcedShockedThrowingRecipes")
-        @Config.RequiresMcRestart
-        public boolean registerFlamedIcedShockedThrowingRecipes = true;
     }
 
     @Mod.EventBusSubscriber(modid = SpartanFire.MODID)

@@ -22,6 +22,10 @@ item.spartanfire:throwing_axe_custom.name=Hacha arrojadiza de %s
 item.spartanfire:javelin_custom.name=Jabalina de %s
 item.witherbone_handle.name=Mango de hueso de wither
 item.witherbone_pole.name=Asta de hueso de wither
+item.dragonbone_bolt.name=Virote de Dragon
+item.dragonbone_bolt_fire.name=Virote de Dragon flameante
+item.dragonbone_bolt_ice.name=Virote de Dragon gelida
+item.dragonbone_bolt_lightning.name=Virote de Dragon electrica
 item.spartanfire:glaive_custom.name=Guja de %s
 item.spartanfire.quarterstaff_custom.name=Baston belico de %s
 

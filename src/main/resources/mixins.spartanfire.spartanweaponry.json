@@ -1,0 +1,20 @@
+{
+  "required": true,
+  "package": "com.chaosbuffalo.spartanfire.mixin",
+  "refmap": "mixins.spartanfire.refmap.json",
+  "compatibilityLevel": "JAVA_8",
+  "target": "@env(DEFAULT)",
+  "minVersion": "0.8",
+  "mixins": [
+    "spartanweaponry.EventHandlerCommonMixin",
+    "spartanweaponry.ItemCrossbowMixin",
+    "spartanweaponry.ItemLongbowMixin",
+    "spartanweaponry.ItemQuiverArrowMixin",
+    "spartanweaponry.ItemQuiverBoltMixin",
+    "spartanweaponry.SlotArrowMixin",
+    "spartanweaponry.SlotBoltMixin"
+  ],
+  "injectors": {
+    "maxShiftBy": 10
+  }
+}
