@@ -1,20 +1,20 @@
 package com.chaosbuffalo.spartanfire.init;
 
 import com.chaosbuffalo.spartanfire.ForgeConfigHandler;
-import com.chaosbuffalo.spartanfire.IAFMatConverter;
 import com.chaosbuffalo.spartanfire.SpartanFire;
-import com.chaosbuffalo.spartanfire.integrations.*;
-import com.chaosbuffalo.spartanfire.Utils;
+import com.chaosbuffalo.spartanfire.enums.EnumMaterial;
+import com.chaosbuffalo.spartanfire.items.ItemDragonBolt;
 import com.chaosbuffalo.spartanfire.items.SFItem;
-import com.chaosbuffalo.spartanfire.recipes.FireIceLightningThrowingRecipes;
 import com.chaosbuffalo.spartanfire.recipes.VenomThrowingRecipes;
 import com.github.alexthe666.iceandfire.IceAndFire;
-import com.github.alexthe666.iceandfire.core.ModItems;
-import com.oblivioussp.spartanweaponry.api.SpartanWeaponryAPI;
-import com.oblivioussp.spartanweaponry.api.weaponproperty.WeaponProperty;
+import com.github.alexthe666.iceandfire.entity.projectile.EntityDragonArrow;
+import com.github.alexthe666.iceandfire.item.IafDragonForgeRecipeRegistry;
+import com.github.alexthe666.iceandfire.item.IafItemRegistry;
+import com.github.alexthe666.iceandfire.recipe.DragonForgeRecipe;
 import com.oblivioussp.spartanweaponry.util.ConfigHandler;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -28,319 +28,177 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
  * Created by Jacob on 7/20/2018.
  */@Mod.EventBusSubscriber
 public class ItemRegistrySFire {
-    public static final Set<IAFMatConverter> MATERIALS_TO_REGISTER = new LinkedHashSet<>();
-
-    public static final String DRAGONBONE = "dragonbone";
-    public static final String FIRE_DRAGONBONE = "fire_dragonbone";
-    public static final String ICE_DRAGONBONE = "ice_dragonbone";
-    public static final String LIGHTNING_DRAGONBONE = "lightning_dragonbone";
-
-    public static final String JUNGLE = "jungle";
-    public static final String JUNGLE_VENOM = "jungle_venom";
-    public static final String DESERT = "desert";
-    public static final String DESERT_VENOM = "desert_venom";
-
     private static final Set<Item> ALL_ITEMS = new HashSet<>();
 
-    static {
-        MATERIALS_TO_REGISTER.add(new IAFMatConverter(DRAGONBONE,
-                Utils.spartanMatFromToolMat(DRAGONBONE, ModItems.boneTools,
-                9867904, 14999238, "ingotDragonbone")));
-        MATERIALS_TO_REGISTER.add(new IAFMatConverter(FIRE_DRAGONBONE,
-                Utils.spartanMatFromToolMat(FIRE_DRAGONBONE, ModItems.fireBoneTools,
-                9867904, 14999238, "ingotDragonbone"),
-                new FireSwordWeaponProperty(FIRE_DRAGONBONE, SpartanFire.MODID)));
-        MATERIALS_TO_REGISTER.add(new IAFMatConverter(ICE_DRAGONBONE,
-                Utils.spartanMatFromToolMat(ICE_DRAGONBONE, ModItems.iceBoneTools,
-                        9867904, 14999238, "ingotDragonbone"),
-                new IceSwordWeaponProperty(ICE_DRAGONBONE, SpartanFire.MODID)));
-        MATERIALS_TO_REGISTER.add(new IAFMatConverter(LIGHTNING_DRAGONBONE,
-                Utils.spartanMatFromToolMat(LIGHTNING_DRAGONBONE, ModItems.lightningBoneTools,
-                        9867904, 14999238, "ingotDragonbone"),
-                new LightningSwordWeaponProperty(LIGHTNING_DRAGONBONE, SpartanFire.MODID)));
-        MATERIALS_TO_REGISTER.add(new IAFMatConverter(JUNGLE,
-                Utils.spartanMatFromToolMat(JUNGLE, ModItems.myrmexChitin,
-                        9867904, 14999238, "ingotJungleChitin"),
-                new MyrmexSwordProperty(JUNGLE, SpartanFire.MODID)
-                ));
-        MATERIALS_TO_REGISTER.add(new IAFMatConverter(DESERT,
-                Utils.spartanMatFromToolMat(DESERT, ModItems.myrmexChitin,
-                        9867904, 14999238, "ingotDesertChitin"),
-                new MyrmexSwordProperty(DESERT, SpartanFire.MODID)
-        ));
-        MATERIALS_TO_REGISTER.add(new IAFMatConverter(JUNGLE_VENOM,
-                Utils.spartanMatFromToolMat(JUNGLE_VENOM, ModItems.myrmexChitin,
-                        9867904, 14999238, "ingotJungleChitin"),
-                new MyrmexSwordProperty(JUNGLE, SpartanFire.MODID),
-                new MyrmexPoisonSwordProperty(JUNGLE_VENOM, SpartanFire.MODID)
-        ));
-        MATERIALS_TO_REGISTER.add(new IAFMatConverter(DESERT_VENOM,
-                Utils.spartanMatFromToolMat(DESERT_VENOM, ModItems.myrmexChitin,
-                        9867904, 14999238, "ingotDesertChitin"),
-                new MyrmexSwordProperty(DESERT, SpartanFire.MODID),
-                new MyrmexPoisonSwordProperty(DESERT_VENOM, SpartanFire.MODID)
-        ));
-
-    }
+    private static final Item witherbone_handle = new SFItem(
+            new ResourceLocation(SpartanFire.MODID, "witherbone_handle"),
+            IceAndFire.TAB_ITEMS
+    );
+    private static final Item witherbone_pole = new SFItem(
+            new ResourceLocation(SpartanFire.MODID, "witherbone_pole"),
+            IceAndFire.TAB_ITEMS
+    );
+    public static final Item dragonbone_bolt = new ItemDragonBolt(
+            new ResourceLocation(SpartanFire.MODID, "dragonbone_bolt"),
+            IceAndFire.TAB_ITEMS,
+            EntityDragonArrow.Type.DEFAULT
+    );
+    public static final Item dragonbone_bolt_fire = new ItemDragonBolt(
+            new ResourceLocation(SpartanFire.MODID, "dragonbone_bolt_fire"),
+            IceAndFire.TAB_ITEMS,
+            EntityDragonArrow.Type.FIRE
+    );
+    public static final Item dragonbone_bolt_ice = new ItemDragonBolt(
+            new ResourceLocation(SpartanFire.MODID, "dragonbone_bolt_ice"),
+            IceAndFire.TAB_ITEMS,
+            EntityDragonArrow.Type.ICE
+    );
+    public static final Item dragonbone_bolt_lightning = new ItemDragonBolt(
+            new ResourceLocation(SpartanFire.MODID, "dragonbone_bolt_lightning"),
+            IceAndFire.TAB_ITEMS,
+            EntityDragonArrow.Type.LIGHTNING
+    );
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> ev) {
         // Don't know why this was left out from ice and fire
-        OreDictionary.registerOre("ingotDragonbone", ModItems.dragonbone);
-        OreDictionary.registerOre("ingotJungleChitin", ModItems.myrmex_jungle_chitin);
-        OreDictionary.registerOre("ingotDesertChitin", ModItems.myrmex_desert_chitin);
-
+        OreDictionary.registerOre("ingotDragonbone", IafItemRegistry.dragonbone);
+        OreDictionary.registerOre("ingotJungleChitin", IafItemRegistry.myrmex_jungle_chitin);
+        OreDictionary.registerOre("ingotDesertChitin", IafItemRegistry.myrmex_desert_chitin);
+        OreDictionary.registerOre("ingotWitherShard", IafItemRegistry.wither_shard);
 
         Set<Item> item_set = new LinkedHashSet<>();
-        Item witherboneHandle = new SFItem(new ResourceLocation(SpartanFire.MODID, "witherbone_handle"),
-                IceAndFire.TAB_ITEMS);
-        Item witherbonePole = new SFItem(new ResourceLocation(SpartanFire.MODID, "witherbone_pole"),
-                IceAndFire.TAB_ITEMS);
-        ALL_ITEMS.add(witherboneHandle);
-        ALL_ITEMS.add(witherbonePole);
-        for (IAFMatConverter mat : MATERIALS_TO_REGISTER){
-            if (!ConfigHandler.disableKatana){
-                Item katana = SpartanWeaponryAPI.createKatana(
-                        mat.material,
-                        SpartanFire.MODID,
-                        IceAndFire.TAB_ITEMS,
-                        mat.properties.toArray(new WeaponProperty[0])
-                );
-                ModelRenderRegistrySFire.addItemToRegistry(katana,
+
+        ALL_ITEMS.add(witherbone_handle);
+        ALL_ITEMS.add(witherbone_pole);
+
+        ALL_ITEMS.add(dragonbone_bolt);
+        ALL_ITEMS.add(dragonbone_bolt_fire);
+        ALL_ITEMS.add(dragonbone_bolt_ice);
+        ALL_ITEMS.add(dragonbone_bolt_lightning);
+
+        for (EnumMaterial mat : EnumMaterial.values()){
+            if (mat.katana != null){
+                ModelRenderRegistrySFire.addItemToRegistry(mat.katana,
                         "katana_" + mat.material.getUnlocName());
-                item_set.add(katana);
+                item_set.add(mat.katana);
             }
-            if (!ConfigHandler.disableScythe){
-                Item scythe = SpartanWeaponryAPI.createScythe(
-                        mat.material,
-                        SpartanFire.MODID,
-                        IceAndFire.TAB_ITEMS,
-                        mat.properties.toArray(new WeaponProperty[0])
-                );
-                ModelRenderRegistrySFire.addItemToRegistry(scythe,
+            if (mat.scythe != null){
+                ModelRenderRegistrySFire.addItemToRegistry(mat.scythe,
                         "scythe_" + mat.material.getUnlocName());
-                item_set.add(scythe);
+                item_set.add(mat.scythe);
             }
-            if (!ConfigHandler.disableGreatsword){
-                Item greatsword = SpartanWeaponryAPI.createGreatsword(
-                        mat.material,
-                        SpartanFire.MODID,
-                        IceAndFire.TAB_ITEMS,
-                        mat.properties.toArray(new WeaponProperty[0])
-                );
-                ModelRenderRegistrySFire.addItemToRegistry(greatsword, "greatsword_" + mat.material.getUnlocName());
-                item_set.add(greatsword);
+            if (mat.greatsword != null){
+                ModelRenderRegistrySFire.addItemToRegistry(mat.greatsword,
+                        "greatsword_" + mat.material.getUnlocName());
+                item_set.add(mat.greatsword);
             }
-            if (!ConfigHandler.disableLongsword){
-                Item longsword = SpartanWeaponryAPI.createLongsword(
-                        mat.material,
-                        SpartanFire.MODID,
-                        IceAndFire.TAB_ITEMS,
-                        mat.properties.toArray(new WeaponProperty[0])
-                );
-                ModelRenderRegistrySFire.addItemToRegistry(longsword, "longsword_" + mat.material.getUnlocName());
-                item_set.add(longsword);
+            if (mat.longsword != null){
+                ModelRenderRegistrySFire.addItemToRegistry(mat.longsword,
+                        "longsword_" + mat.material.getUnlocName());
+                item_set.add(mat.longsword);
             }
-            if (!ConfigHandler.disableSaber){
-                Item saber = SpartanWeaponryAPI.createSaber(
-                        mat.material,
-                        SpartanFire.MODID,
-                        IceAndFire.TAB_ITEMS,
-                        mat.properties.toArray(new WeaponProperty[0])
-                );
-                ModelRenderRegistrySFire.addItemToRegistry(saber, "saber_" + mat.material.getUnlocName());
-                item_set.add(saber);
+            if (mat.saber != null){
+                ModelRenderRegistrySFire.addItemToRegistry(mat.saber,
+                        "saber_" + mat.material.getUnlocName());
+                item_set.add(mat.saber);
             }
-            if (!ConfigHandler.disableRapier){
-                Item rapier = SpartanWeaponryAPI.createRapier(
-                        mat.material,
-                        SpartanFire.MODID,
-                        IceAndFire.TAB_ITEMS,
-                        mat.properties.toArray(new WeaponProperty[0])
-                );
-                ModelRenderRegistrySFire.addItemToRegistry(rapier, "rapier_" + mat.material.getUnlocName());
-                item_set.add(rapier);
+            if (mat.rapier != null){
+                ModelRenderRegistrySFire.addItemToRegistry(mat.rapier,
+                        "rapier_" + mat.material.getUnlocName());
+                item_set.add(mat.rapier);
             }
-            if (!ConfigHandler.disableDagger) {
-                Item dagger = SpartanWeaponryAPI.createDagger(
-                        mat.material,
-                        SpartanFire.MODID,
-                        IceAndFire.TAB_ITEMS,
-                        mat.properties.toArray(new WeaponProperty[0])
-                );
-                ModelRenderRegistrySFire.addItemToRegistry(dagger,"dagger_" + mat.material.getUnlocName());
-                item_set.add(dagger);
+            if (mat.dagger != null){
+                ModelRenderRegistrySFire.addItemToRegistry(mat.dagger,
+                        "dagger_" + mat.material.getUnlocName());
+                item_set.add(mat.dagger);
             }
-            if (!ConfigHandler.disableSpear) {
-                Item spear = SpartanWeaponryAPI.createSpear(
-                        mat.material,
-                        SpartanFire.MODID,
-                        IceAndFire.TAB_ITEMS,
-                        mat.properties.toArray(new WeaponProperty[0])
-                );
-                ModelRenderRegistrySFire.addItemToRegistry(spear,"spear_" + mat.material.getUnlocName());
-                item_set.add(spear);
+            if (mat.spear != null){
+                ModelRenderRegistrySFire.addItemToRegistry(mat.spear,
+                        "spear_" + mat.material.getUnlocName());
+                item_set.add(mat.spear);
             }
-            if (!ConfigHandler.disablePike) {
-                Item pike = SpartanWeaponryAPI.createPike(
-                        mat.material,
-                        SpartanFire.MODID,
-                        IceAndFire.TAB_ITEMS,
-                        mat.properties.toArray(new WeaponProperty[0])
-                );
-                ModelRenderRegistrySFire.addItemToRegistry(pike, "pike_" + mat.material.getUnlocName());
-                item_set.add(pike);
+            if (mat.pike != null){
+                ModelRenderRegistrySFire.addItemToRegistry(mat.pike,
+                        "pike_" + mat.material.getUnlocName());
+                item_set.add(mat.pike);
             }
-            if (!ConfigHandler.disableLance) {
-                Item lance = SpartanWeaponryAPI.createLance(
-                        mat.material,
-                        SpartanFire.MODID,
-                        IceAndFire.TAB_ITEMS,
-                        mat.properties.toArray(new WeaponProperty[0])
-                );
-                ModelRenderRegistrySFire.addItemToRegistry(lance, "lance_" + mat.material.getUnlocName());
-                item_set.add(lance);
+            if (mat.lance != null){
+                ModelRenderRegistrySFire.addItemToRegistry(mat.lance,
+                        "lance_" + mat.material.getUnlocName());
+                item_set.add(mat.lance);
             }
-            if (!ConfigHandler.disableHalberd) {
-                Item halberd = SpartanWeaponryAPI.createHalberd(
-                        mat.material,
-                        SpartanFire.MODID,
-                        IceAndFire.TAB_ITEMS,
-                        mat.properties.toArray(new WeaponProperty[0])
-                );
-                ModelRenderRegistrySFire.addItemToRegistry(halberd, "halberd_" + mat.material.getUnlocName());
-                item_set.add(halberd);
+            if (mat.halberd != null){
+                ModelRenderRegistrySFire.addItemToRegistry(mat.halberd,
+                        "halberd_" + mat.material.getUnlocName());
+                item_set.add(mat.halberd);
             }
-            if (!ConfigHandler.disableWarhammer) {
-                Item warhammer = SpartanWeaponryAPI.createWarhammer(
-                        mat.material,
-                        SpartanFire.MODID,
-                        IceAndFire.TAB_ITEMS,
-                        mat.properties.toArray(new WeaponProperty[0])
-                );
-                ModelRenderRegistrySFire.addItemToRegistry(warhammer, "warhammer_" + mat.material.getUnlocName());
-                item_set.add(warhammer);
+            if (mat.warhammer != null){
+                ModelRenderRegistrySFire.addItemToRegistry(mat.warhammer,
+                        "warhammer_" + mat.material.getUnlocName());
+                item_set.add(mat.warhammer);
             }
-            if (!ConfigHandler.disableHammer) {
-                Item hammer = SpartanWeaponryAPI.createHammer(
-                        mat.material,
-                        SpartanFire.MODID,
-                        IceAndFire.TAB_ITEMS,
-                        mat.properties.toArray(new WeaponProperty[0])
-                );
-                ModelRenderRegistrySFire.addItemToRegistry(hammer,"hammer_" + mat.material.getUnlocName());
-                item_set.add(hammer);
+            if (mat.hammer != null){
+                ModelRenderRegistrySFire.addItemToRegistry(mat.hammer,
+                        "hammer_" + mat.material.getUnlocName());
+                item_set.add(mat.hammer);
             }
-            if (!ConfigHandler.disableThrowingAxe) {
-                Item throwing_axe = SpartanWeaponryAPI.createThrowingAxe(
-                        mat.material,
-                        SpartanFire.MODID,
-                        IceAndFire.TAB_ITEMS,
-                        mat.properties.toArray(new WeaponProperty[0])
-                );
-                ModelRenderRegistrySFire.addItemToRegistry(throwing_axe,
+            if (mat.throwing_axe != null){
+                ModelRenderRegistrySFire.addItemToRegistry(mat.throwing_axe,
                         "throwing_axe_" + mat.material.getUnlocName());
-                item_set.add(throwing_axe);
+                item_set.add(mat.throwing_axe);
             }
-            if (!ConfigHandler.disableThrowingKnife) {
-                Item throwing_knife = SpartanWeaponryAPI.createThrowingKnife(
-                        mat.material,
-                        SpartanFire.MODID,
-                        IceAndFire.TAB_ITEMS,
-                        mat.properties.toArray(new WeaponProperty[0])
-                );
-                ModelRenderRegistrySFire.addItemToRegistry(throwing_knife,
+            if (mat.throwing_knife != null){
+                ModelRenderRegistrySFire.addItemToRegistry(mat.throwing_knife,
                         "throwing_knife_" + mat.material.getUnlocName());
-                item_set.add(throwing_knife);
+                item_set.add(mat.throwing_knife);
             }
-            if (!ConfigHandler.disableLongbow && !ConfigHandler.woodenLongbowOnly) {
-                Item longbow = SpartanWeaponryAPI.createLongbow(
-                        mat.material,
-                        SpartanFire.MODID,
-                        IceAndFire.TAB_ITEMS,
-                        null
-                );
-
-                ModelRenderRegistrySFire.addItemToRegistry(longbow, "longbow_" + mat.material.getUnlocName());
-                item_set.add(longbow);
+            if (mat.longbow != null){
+                ModelRenderRegistrySFire.addItemToRegistry(mat.longbow,
+                        "longbow_" + mat.material.getUnlocName());
+                item_set.add(mat.longbow);
             }
-            if (!ConfigHandler.disableCrossbow && !ConfigHandler.woodenCrossbowOnly) {
-                Item crossbow = SpartanWeaponryAPI.createCrossbow(
-                        mat.material,
-                        SpartanFire.MODID,
-                        IceAndFire.TAB_ITEMS,
-                        null
-                );
-
-                ModelRenderRegistrySFire.addItemToRegistry(crossbow,"crossbow_" + mat.material.getUnlocName());
-                item_set.add(crossbow);
+            if (mat.crossbow != null){
+                ModelRenderRegistrySFire.addItemToRegistry(mat.crossbow,
+                        "crossbow_" + mat.material.getUnlocName());
+                item_set.add(mat.crossbow);
             }
-            if (!ConfigHandler.disableJavelin) {
-                Item javelin = SpartanWeaponryAPI.createJavelin(
-                        mat.material,
-                        SpartanFire.MODID,
-                        IceAndFire.TAB_ITEMS,
-                        mat.properties.toArray(new WeaponProperty[0])
-                );
-                ModelRenderRegistrySFire.addItemToRegistry(javelin,"javelin_" + mat.material.getUnlocName());
-                item_set.add(javelin);
+            if (mat.javelin != null){
+                ModelRenderRegistrySFire.addItemToRegistry(mat.javelin,
+                        "javelin_" + mat.material.getUnlocName());
+                item_set.add(mat.javelin);
             }
-            if (!ConfigHandler.disableBattleaxe) {
-                Item battleaxe = SpartanWeaponryAPI.createBattleaxe(
-                        mat.material,
-                        SpartanFire.MODID,
-                        IceAndFire.TAB_ITEMS,
-                        mat.properties.toArray(new WeaponProperty[0])
-                );
-                ModelRenderRegistrySFire.addItemToRegistry(battleaxe, "battleaxe_" + mat.material.getUnlocName());
-                item_set.add(battleaxe);
+            if (mat.battleaxe != null){
+                ModelRenderRegistrySFire.addItemToRegistry(mat.battleaxe,
+                        "battleaxe_" + mat.material.getUnlocName());
+                item_set.add(mat.battleaxe);
             }
-            if (!ConfigHandler.disableBoomerang && !ConfigHandler.woodenBoomerangOnly) {
-                Item boomerang = SpartanWeaponryAPI.createBoomerang(
-                        mat.material,
-                        SpartanFire.MODID,
-                        IceAndFire.TAB_ITEMS,
-                        mat.properties.toArray(new WeaponProperty[0])
-                );
-                ModelRenderRegistrySFire.addItemToRegistry(boomerang,
+            if (mat.boomerang != null){
+                ModelRenderRegistrySFire.addItemToRegistry(mat.boomerang,
                         "boomerang_" + mat.material.getUnlocName());
-                item_set.add(boomerang);
+                item_set.add(mat.boomerang);
             }
-            if (!ConfigHandler.disableMace) {
-                Item mace = SpartanWeaponryAPI.createMace(
-                        mat.material,
-                        SpartanFire.MODID,
-                        IceAndFire.TAB_ITEMS,
-                        mat.properties.toArray(new WeaponProperty[0])
-                );
-                ModelRenderRegistrySFire.addItemToRegistry(mace, "mace_" + mat.material.getUnlocName());
-                item_set.add(mace);
+            if (mat.mace != null){
+                ModelRenderRegistrySFire.addItemToRegistry(mat.mace,
+                        "mace_" + mat.material.getUnlocName());
+                item_set.add(mat.mace);
             }
-            if (!ConfigHandler.disableQuarterstaff){
-                Item quarterstaff = SpartanWeaponryAPI.createQuarterstaff(
-                        mat.material,
-                        SpartanFire.MODID,
-                        IceAndFire.TAB_ITEMS,
-                        mat.properties.toArray(new WeaponProperty[0])
-                );
-                ModelRenderRegistrySFire.addItemToRegistry(quarterstaff, "staff_" + mat.material.getUnlocName());
-                item_set.add(quarterstaff);
+            if (mat.quarterstaff != null){
+                ModelRenderRegistrySFire.addItemToRegistry(mat.quarterstaff,
+                        "staff_" + mat.material.getUnlocName());
+                item_set.add(mat.quarterstaff);
             }
-            if (!ConfigHandler.disableGlaive){
-                Item glaive = SpartanWeaponryAPI.createGlaive(
-                        mat.material,
-                        SpartanFire.MODID,
-                        IceAndFire.TAB_ITEMS,
-                        mat.properties.toArray(new WeaponProperty[0])
-                );
-                ModelRenderRegistrySFire.addItemToRegistry(glaive, "glaive_" + mat.material.getUnlocName());
-                item_set.add(glaive);
+            if (mat.glaive != null){
+                ModelRenderRegistrySFire.addItemToRegistry(mat.glaive,
+                        "glaive_" + mat.material.getUnlocName());
+                item_set.add(mat.glaive);
             }
             if (ConfigHandler.enableExperimentalWeapons && !ConfigHandler.disableParryingDagger){
                 //empty method for now till a create parrying dagger method is created
@@ -350,13 +208,40 @@ public class ItemRegistrySFire {
             ev.getRegistry().register(it);
         }
         ALL_ITEMS.forEach(ev.getRegistry()::register);
+
+        registerAllWeaponRecipes(IafDragonForgeRecipeRegistry.FIRE_FORGE_RECIPES, EnumMaterial.DRAGONBONE, IafItemRegistry.fire_dragon_blood, EnumMaterial.FIRE_DRAGONBONE);
+        registerAllWeaponRecipes(IafDragonForgeRecipeRegistry.ICE_FORGE_RECIPES, EnumMaterial.DRAGONBONE, IafItemRegistry.ice_dragon_blood, EnumMaterial.ICE_DRAGONBONE);
+        registerAllWeaponRecipes(IafDragonForgeRecipeRegistry.LIGHTNING_FORGE_RECIPES, EnumMaterial.DRAGONBONE, IafItemRegistry.lightning_dragon_blood, EnumMaterial.LIGHTNING_DRAGONBONE);
     }
 
-
+    private static void registerAllWeaponRecipes(List<DragonForgeRecipe> recipes, EnumMaterial input, Item blood, EnumMaterial output) {
+        recipes.add(new DragonForgeRecipe(new ItemStack(input.katana), new ItemStack(blood), new ItemStack(output.katana), true));
+        recipes.add(new DragonForgeRecipe(new ItemStack(input.scythe), new ItemStack(blood), new ItemStack(output.scythe), true));
+        recipes.add(new DragonForgeRecipe(new ItemStack(input.greatsword), new ItemStack(blood), new ItemStack(output.greatsword), true));
+        recipes.add(new DragonForgeRecipe(new ItemStack(input.longsword), new ItemStack(blood), new ItemStack(output.longsword), true));
+        recipes.add(new DragonForgeRecipe(new ItemStack(input.saber), new ItemStack(blood), new ItemStack(output.saber), true));
+        recipes.add(new DragonForgeRecipe(new ItemStack(input.rapier), new ItemStack(blood), new ItemStack(output.rapier), true));
+        recipes.add(new DragonForgeRecipe(new ItemStack(input.dagger), new ItemStack(blood), new ItemStack(output.dagger), true));
+        recipes.add(new DragonForgeRecipe(new ItemStack(input.spear), new ItemStack(blood), new ItemStack(output.spear), true));
+        recipes.add(new DragonForgeRecipe(new ItemStack(input.pike), new ItemStack(blood), new ItemStack(output.pike), true));
+        recipes.add(new DragonForgeRecipe(new ItemStack(input.lance), new ItemStack(blood), new ItemStack(output.lance), true));
+        recipes.add(new DragonForgeRecipe(new ItemStack(input.halberd), new ItemStack(blood), new ItemStack(output.halberd), true));
+        recipes.add(new DragonForgeRecipe(new ItemStack(input.warhammer), new ItemStack(blood), new ItemStack(output.warhammer), true));
+        recipes.add(new DragonForgeRecipe(new ItemStack(input.hammer), new ItemStack(blood), new ItemStack(output.hammer), true));
+        recipes.add(new DragonForgeRecipe(new ItemStack(input.throwing_axe), new ItemStack(blood), new ItemStack(output.throwing_axe), true));
+        recipes.add(new DragonForgeRecipe(new ItemStack(input.throwing_knife), new ItemStack(blood), new ItemStack(output.throwing_knife), true));
+        recipes.add(new DragonForgeRecipe(new ItemStack(input.longbow), new ItemStack(blood), new ItemStack(output.longbow), true));
+        recipes.add(new DragonForgeRecipe(new ItemStack(input.crossbow), new ItemStack(blood), new ItemStack(output.crossbow), true));
+        recipes.add(new DragonForgeRecipe(new ItemStack(input.javelin), new ItemStack(blood), new ItemStack(output.javelin), true));
+        recipes.add(new DragonForgeRecipe(new ItemStack(input.battleaxe), new ItemStack(blood), new ItemStack(output.battleaxe), true));
+        recipes.add(new DragonForgeRecipe(new ItemStack(input.boomerang), new ItemStack(blood), new ItemStack(output.boomerang), true));
+        recipes.add(new DragonForgeRecipe(new ItemStack(input.mace), new ItemStack(blood), new ItemStack(output.mace), true));
+        recipes.add(new DragonForgeRecipe(new ItemStack(input.quarterstaff), new ItemStack(blood), new ItemStack(output.quarterstaff), true));
+        recipes.add(new DragonForgeRecipe(new ItemStack(input.glaive), new ItemStack(blood), new ItemStack(output.glaive), true));
+    }
 
     @SubscribeEvent
     public static void registerRecipeEvent(RegistryEvent.Register<IRecipe> event) {
-        if(ForgeConfigHandler.general.registerFlamedIcedShockedThrowingRecipes) event.getRegistry().register(new FireIceLightningThrowingRecipes().setRegistryName(new ResourceLocation(SpartanFire.MODID, "fireice_throwing")));
         if(ForgeConfigHandler.general.registerVenomThrowingRecipes) event.getRegistry().register(new VenomThrowingRecipes().setRegistryName(new ResourceLocation(SpartanFire.MODID, "venom_throwing")));
     }
 

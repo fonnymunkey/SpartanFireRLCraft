@@ -21,6 +21,10 @@ item.spartanfire:throwing_axe_custom.name=%s Throwing Axe
 item.spartanfire:javelin_custom.name=%s Javelin
 item.witherbone_handle.name=Witherbone Handle
 item.witherbone_pole.name=Witherbone Pole
+item.dragonbone_bolt.name=Dragon Bone Bolt
+item.dragonbone_bolt_fire.name=Flamed Dragon Bone Bolt
+item.dragonbone_bolt_ice.name=Iced Dragon Bone Bolt
+item.dragonbone_bolt_lightning.name=Shocked Dragon Bone Bolt
 item.spartanfire:glaive_custom.name=%s Glaive
 item.spartanfire.quarterstaff_custom.name=%s Quarterstaff
 
