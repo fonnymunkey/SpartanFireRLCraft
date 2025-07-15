@@ -4,6 +4,7 @@ import com.oblivioussp.spartanweaponry.api.ToolMaterialEx;
 import com.oblivioussp.spartanweaponry.api.weaponproperty.WeaponProperty;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by Jacob on 7/20/2018.
@@ -20,8 +21,6 @@ public class IAFMatConverter {
         this.name = name;
         this.material = material;
         this.properties = new ArrayList<>();
-        for (WeaponProperty prop : properties){
-            this.properties.add(prop);
-        }
+        this.properties.addAll(Arrays.asList(properties));
     }
 }

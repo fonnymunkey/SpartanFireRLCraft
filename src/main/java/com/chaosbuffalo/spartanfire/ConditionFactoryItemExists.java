@@ -8,14 +8,13 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import java.util.function.BooleanSupplier;
 
 public class ConditionFactoryItemExists implements IConditionFactory {
+    
     public ConditionFactoryItemExists() {
     }
 
     public BooleanSupplier parse(JsonContext context, JsonObject json) {
         String itemName = json.get("item").getAsString();
-        boolean result = !GameRegistry.makeItemStack(itemName, 0, 1, (String)null).isEmpty();
-        return () -> {
-            return result;
-        };
+        boolean result = !GameRegistry.makeItemStack(itemName, 0, 1, null).isEmpty();
+        return () -> result;
     }
 }

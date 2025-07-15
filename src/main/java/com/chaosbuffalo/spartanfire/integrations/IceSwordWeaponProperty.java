@@ -15,7 +15,7 @@ public class IceSwordWeaponProperty extends SpartanFireWeaponProperty {
 
     public float getHitEffectModifier(EntityLivingBase target, EntityLivingBase attacker) {
         float mod = 0F;
-        if (target instanceof EntityFireDragon) {
+        if(target instanceof EntityFireDragon) {
             mod += 13.5F;
         }
         IEntityEffectCapability capability = InFCapabilities.getEntityEffectCapability(target);

@@ -9,8 +9,7 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class Utils {
 
-    public static ToolMaterialEx spartanMatFromToolMat(String name, Item.ToolMaterial material,
-                                                       int color1, int color2, String repairName){
+    public static ToolMaterialEx spartanMatFromToolMat(String name, Item.ToolMaterial material, int color1, int color2, String repairName) {
         return new ToolMaterialEx(
                 name,
                 repairName,
@@ -24,8 +23,7 @@ public class Utils {
                 material.getEnchantability());
     }
 
-    public static ToolMaterialEx spartanMatFromToolMat(String name, Item.ToolMaterial material,
-                                                       int color1, int color2){
+    public static ToolMaterialEx spartanMatFromToolMat(String name, Item.ToolMaterial material, int color1, int color2) {
         return new ToolMaterialEx(
                 name,
                 "ingot" + StringUtils.capitalize(name),

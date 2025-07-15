@@ -15,4 +15,3 @@ public class MyrmexPoisonSwordProperty extends SpartanFireWeaponProperty {
         return 0F;
     }
 }
-

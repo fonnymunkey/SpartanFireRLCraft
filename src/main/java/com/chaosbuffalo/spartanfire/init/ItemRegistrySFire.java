@@ -2,6 +2,7 @@ package com.chaosbuffalo.spartanfire.init;
 
 import com.chaosbuffalo.spartanfire.ForgeConfigHandler;
 import com.chaosbuffalo.spartanfire.SpartanFire;
+import com.chaosbuffalo.spartanfire.entity.EntityDragonBolt;
 import com.chaosbuffalo.spartanfire.enums.EnumMaterial;
 import com.chaosbuffalo.spartanfire.items.ItemDragonBolt;
 import com.chaosbuffalo.spartanfire.items.SFItem;
@@ -11,7 +12,6 @@ import com.github.alexthe666.iceandfire.entity.projectile.EntityDragonArrow;
 import com.github.alexthe666.iceandfire.item.IafDragonForgeRecipeRegistry;
 import com.github.alexthe666.iceandfire.item.IafItemRegistry;
 import com.github.alexthe666.iceandfire.recipe.DragonForgeRecipe;
-import com.oblivioussp.spartanweaponry.util.ConfigHandler;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -22,6 +22,8 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.EntityEntry;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
@@ -33,8 +35,10 @@ import java.util.Set;
 
 /**
  * Created by Jacob on 7/20/2018.
- */@Mod.EventBusSubscriber
+ */
+@Mod.EventBusSubscriber
 public class ItemRegistrySFire {
+    
     private static final Set<Item> ALL_ITEMS = new HashSet<>();
 
     private static final Item witherbone_handle = new SFItem(
@@ -84,127 +88,124 @@ public class ItemRegistrySFire {
         ALL_ITEMS.add(dragonbone_bolt_ice);
         ALL_ITEMS.add(dragonbone_bolt_lightning);
 
-        for (EnumMaterial mat : EnumMaterial.values()){
-            if (mat.katana != null){
+        for(EnumMaterial mat : EnumMaterial.values()) {
+            if(mat.katana != null) {
                 ModelRenderRegistrySFire.addItemToRegistry(mat.katana,
                         "katana_" + mat.material.getUnlocName());
                 item_set.add(mat.katana);
             }
-            if (mat.scythe != null){
+            if(mat.scythe != null) {
                 ModelRenderRegistrySFire.addItemToRegistry(mat.scythe,
                         "scythe_" + mat.material.getUnlocName());
                 item_set.add(mat.scythe);
             }
-            if (mat.greatsword != null){
+            if(mat.greatsword != null) {
                 ModelRenderRegistrySFire.addItemToRegistry(mat.greatsword,
                         "greatsword_" + mat.material.getUnlocName());
                 item_set.add(mat.greatsword);
             }
-            if (mat.longsword != null){
+            if(mat.longsword != null) {
                 ModelRenderRegistrySFire.addItemToRegistry(mat.longsword,
                         "longsword_" + mat.material.getUnlocName());
                 item_set.add(mat.longsword);
             }
-            if (mat.saber != null){
+            if(mat.saber != null) {
                 ModelRenderRegistrySFire.addItemToRegistry(mat.saber,
                         "saber_" + mat.material.getUnlocName());
                 item_set.add(mat.saber);
             }
-            if (mat.rapier != null){
+            if(mat.rapier != null) {
                 ModelRenderRegistrySFire.addItemToRegistry(mat.rapier,
                         "rapier_" + mat.material.getUnlocName());
                 item_set.add(mat.rapier);
             }
-            if (mat.dagger != null){
+            if(mat.dagger != null) {
                 ModelRenderRegistrySFire.addItemToRegistry(mat.dagger,
                         "dagger_" + mat.material.getUnlocName());
                 item_set.add(mat.dagger);
             }
-            if (mat.spear != null){
+            if(mat.spear != null) {
                 ModelRenderRegistrySFire.addItemToRegistry(mat.spear,
                         "spear_" + mat.material.getUnlocName());
                 item_set.add(mat.spear);
             }
-            if (mat.pike != null){
+            if(mat.pike != null) {
                 ModelRenderRegistrySFire.addItemToRegistry(mat.pike,
                         "pike_" + mat.material.getUnlocName());
                 item_set.add(mat.pike);
             }
-            if (mat.lance != null){
+            if(mat.lance != null) {
                 ModelRenderRegistrySFire.addItemToRegistry(mat.lance,
                         "lance_" + mat.material.getUnlocName());
                 item_set.add(mat.lance);
             }
-            if (mat.halberd != null){
+            if(mat.halberd != null) {
                 ModelRenderRegistrySFire.addItemToRegistry(mat.halberd,
                         "halberd_" + mat.material.getUnlocName());
                 item_set.add(mat.halberd);
             }
-            if (mat.warhammer != null){
+            if(mat.warhammer != null) {
                 ModelRenderRegistrySFire.addItemToRegistry(mat.warhammer,
                         "warhammer_" + mat.material.getUnlocName());
                 item_set.add(mat.warhammer);
             }
-            if (mat.hammer != null){
+            if(mat.hammer != null) {
                 ModelRenderRegistrySFire.addItemToRegistry(mat.hammer,
                         "hammer_" + mat.material.getUnlocName());
                 item_set.add(mat.hammer);
             }
-            if (mat.throwing_axe != null){
+            if(mat.throwing_axe != null) {
                 ModelRenderRegistrySFire.addItemToRegistry(mat.throwing_axe,
                         "throwing_axe_" + mat.material.getUnlocName());
                 item_set.add(mat.throwing_axe);
             }
-            if (mat.throwing_knife != null){
+            if(mat.throwing_knife != null) {
                 ModelRenderRegistrySFire.addItemToRegistry(mat.throwing_knife,
                         "throwing_knife_" + mat.material.getUnlocName());
                 item_set.add(mat.throwing_knife);
             }
-            if (mat.longbow != null){
+            if(mat.longbow != null) {
                 ModelRenderRegistrySFire.addItemToRegistry(mat.longbow,
                         "longbow_" + mat.material.getUnlocName());
                 item_set.add(mat.longbow);
             }
-            if (mat.crossbow != null){
+            if(mat.crossbow != null) {
                 ModelRenderRegistrySFire.addItemToRegistry(mat.crossbow,
                         "crossbow_" + mat.material.getUnlocName());
                 item_set.add(mat.crossbow);
             }
-            if (mat.javelin != null){
+            if(mat.javelin != null) {
                 ModelRenderRegistrySFire.addItemToRegistry(mat.javelin,
                         "javelin_" + mat.material.getUnlocName());
                 item_set.add(mat.javelin);
             }
-            if (mat.battleaxe != null){
+            if(mat.battleaxe != null) {
                 ModelRenderRegistrySFire.addItemToRegistry(mat.battleaxe,
                         "battleaxe_" + mat.material.getUnlocName());
                 item_set.add(mat.battleaxe);
             }
-            if (mat.boomerang != null){
+            if(mat.boomerang != null) {
                 ModelRenderRegistrySFire.addItemToRegistry(mat.boomerang,
                         "boomerang_" + mat.material.getUnlocName());
                 item_set.add(mat.boomerang);
             }
-            if (mat.mace != null){
+            if(mat.mace != null) {
                 ModelRenderRegistrySFire.addItemToRegistry(mat.mace,
                         "mace_" + mat.material.getUnlocName());
                 item_set.add(mat.mace);
             }
-            if (mat.quarterstaff != null){
+            if(mat.quarterstaff != null) {
                 ModelRenderRegistrySFire.addItemToRegistry(mat.quarterstaff,
                         "staff_" + mat.material.getUnlocName());
                 item_set.add(mat.quarterstaff);
             }
-            if (mat.glaive != null){
+            if(mat.glaive != null) {
                 ModelRenderRegistrySFire.addItemToRegistry(mat.glaive,
                         "glaive_" + mat.material.getUnlocName());
                 item_set.add(mat.glaive);
             }
-            if (ConfigHandler.enableExperimentalWeapons && !ConfigHandler.disableParryingDagger){
-                //empty method for now till a create parrying dagger method is created
-            }
         }
-        for (Item it : item_set){
+        for(Item it : item_set) {
             ev.getRegistry().register(it);
         }
         ALL_ITEMS.forEach(ev.getRegistry()::register);
@@ -242,16 +243,29 @@ public class ItemRegistrySFire {
 
     @SubscribeEvent
     public static void registerRecipeEvent(RegistryEvent.Register<IRecipe> event) {
-        if(ForgeConfigHandler.general.registerVenomThrowingRecipes) event.getRegistry().register(new VenomThrowingRecipes().setRegistryName(new ResourceLocation(SpartanFire.MODID, "venom_throwing")));
+        if(ForgeConfigHandler.general.registerVenomThrowingRecipes) {
+            event.getRegistry().register(new VenomThrowingRecipes().setRegistryName(new ResourceLocation(SpartanFire.MODID, "venom_throwing")));
+        }
     }
-
+    
+    @SubscribeEvent
+    public static void registerEntityEvent(RegistryEvent.Register<EntityEntry> event) {
+        EntityRegistry.registerModEntity(
+                new ResourceLocation(SpartanFire.MODID, "bolt_dragonbone"),
+                EntityDragonBolt.class,
+                SpartanFire.MODID + ":bolt_dragonbone",
+                0,
+                SpartanFire.INSTANCE,
+                64,
+                1,
+                true);
+    }
+    
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
     public static void registerModels(ModelRegistryEvent event) {
         ALL_ITEMS.stream()
-                .filter(item -> item.getRegistryName() != null)
-                .forEach(item ->
-                        ModelLoader.setCustomModelResourceLocation(item, 0,
-                                new ModelResourceLocation(item.getRegistryName(), "inventory")));
+                 .filter(item -> item.getRegistryName() != null)
+                 .forEach(item -> ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName(), "inventory")));
     }
 }

@@ -11,10 +11,10 @@ public class MyrmexSwordProperty extends SpartanFireWeaponProperty {
     }
 
     public float getHitEffectModifier(EntityLivingBase target, EntityLivingBase attacker) {
-        if (target.getCreatureAttribute() != EnumCreatureAttribute.ARTHROPOD) {
+        if(target.getCreatureAttribute() != EnumCreatureAttribute.ARTHROPOD) {
             return 4F;
         }
-        if (target instanceof EntityDeathWorm) {
+        if(target instanceof EntityDeathWorm) {
             return 4F;
         }
         return 0F;

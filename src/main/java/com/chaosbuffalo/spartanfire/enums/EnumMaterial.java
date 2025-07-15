@@ -9,7 +9,6 @@ import com.chaosbuffalo.spartanfire.integrations.MyrmexPoisonSwordProperty;
 import com.chaosbuffalo.spartanfire.integrations.MyrmexSwordProperty;
 import com.github.alexthe666.iceandfire.IceAndFire;
 import com.github.alexthe666.iceandfire.core.ModItems;
-import com.github.alexthe666.iceandfire.item.IafItemRegistry;
 import com.oblivioussp.spartanweaponry.api.SpartanWeaponryAPI;
 import com.oblivioussp.spartanweaponry.api.ToolMaterialEx;
 import com.oblivioussp.spartanweaponry.api.weaponproperty.WeaponProperty;
@@ -21,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public enum EnumMaterial {
+    
     DRAGONBONE("dragonbone", ModItems.boneTools,9867904,14999238,"ingotDragonbone"),
     FIRE_DRAGONBONE("fire_dragonbone", ModItems.fireBoneTools,9867904,14999238, "ingotDragonbone"),
     ICE_DRAGONBONE("ice_dragonbone", ModItems.iceBoneTools,9867904, 14999238, "ingotDragonbone"),

@@ -13,6 +13,7 @@ import javax.annotation.Nullable;
 import java.util.*;
 
 public class VenomThrowingRecipes extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
+    
     private static final Map<Item, Item> weaponMapVenom;
 
     // :(
@@ -31,7 +32,9 @@ public class VenomThrowingRecipes extends IForgeRegistryEntry.Impl<IRecipe> impl
     }
 
     @Override
-    public boolean matches(InventoryCrafting inv, World worldIn) { return validInput(inv) != null; }
+    public boolean matches(InventoryCrafting inv, World worldIn) {
+        return validInput(inv) != null;
+    }
 
     @Override
     public ItemStack getCraftingResult(InventoryCrafting inv) {

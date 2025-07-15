@@ -18,20 +18,21 @@ public class RLCombatCompat {
     public static void modifyAttackDamagePre(RLCombatModifyDamageEvent.Pre event) {
         EntityPlayer player = event.getEntityPlayer();
         Entity target = event.getTarget();
-        if (player == null || !(target instanceof EntityLivingBase) || event.getStack().isEmpty()) return;
+        if(player == null || !(target instanceof EntityLivingBase) || event.getStack().isEmpty()) return;
         Item item = event.getStack().getItem();
-        if (item instanceof ItemSwordBase || item instanceof ItemThrowingWeapon) {
+        if(item instanceof ItemSwordBase || item instanceof ItemThrowingWeapon) {
             float mod = 0F;
 
             List<WeaponProperty> properties;
-            if (item instanceof ItemSwordBase) {
-                properties = ((ItemSwordBase) item).getAllWeaponProperties();
-            } else {
-                properties = ((ItemThrowingWeapon) item).getAllWeaponProperties();
+            if(item instanceof ItemSwordBase) {
+                properties = ((ItemSwordBase)item).getAllWeaponProperties();
+            }
+            else {
+                properties = ((ItemThrowingWeapon)item).getAllWeaponProperties();
             }
 
-            for (WeaponProperty property : properties) {
-                if (property instanceof SpartanFireWeaponProperty) {
+            for(WeaponProperty property : properties) {
+                if(property instanceof SpartanFireWeaponProperty) {
                     mod += ((SpartanFireWeaponProperty) property).getHitEffectModifier((EntityLivingBase)target, player);
                 }
             }

@@ -6,7 +6,7 @@ import net.minecraft.item.Item;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class VenomThrowingRecipeMaker {
+public abstract class VenomThrowingRecipeMaker {
 
     public static List<ShapelessCatalystRecipeWrapper> getVenomThrowingRecipes() {
         List<ShapelessCatalystRecipeWrapper> recipes = new ArrayList<>();

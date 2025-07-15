@@ -9,6 +9,7 @@ import net.minecraft.item.ItemStack;
 import java.util.Arrays;
 
 public class ShapelessCatalystRecipeWrapper implements ICraftingRecipeWrapper {
+    
     private final ItemStack input;
     private final ItemStack output;
     private final ItemStack catalyst;

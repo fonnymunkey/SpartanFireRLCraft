@@ -13,7 +13,7 @@ public class LightningSwordWeaponProperty extends SpartanFireWeaponProperty {
 
     public float getHitEffectModifier(EntityLivingBase target, EntityLivingBase attacker) {
         float mod = 0F;
-        if (target instanceof EntityFireDragon || target instanceof EntityIceDragon) {
+        if(target instanceof EntityFireDragon || target instanceof EntityIceDragon) {
             mod += 6.75F;
         }
         ChainLightningUtils.createChainLightningFromTarget(target.world, target, attacker);

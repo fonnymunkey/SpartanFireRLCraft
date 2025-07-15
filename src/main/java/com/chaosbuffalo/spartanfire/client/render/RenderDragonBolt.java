@@ -16,6 +16,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class RenderDragonBolt extends Render<EntityDragonBolt> {
+	
 	private final RenderItem itemRenderer;
 
 	public RenderDragonBolt(RenderManager render, RenderItem itemRenderer) {

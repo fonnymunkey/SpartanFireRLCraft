@@ -7,7 +7,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(modid = SpartanFire.MODID, name = SpartanFire.NAME, version = SpartanFire.VERSION,
@@ -15,7 +14,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 public class SpartanFire {
     public static final String MODID = "spartanfire";
     public static final String NAME = "Spartan Fire";
-    public static final String VERSION = "1.3.3";
+    public static final String VERSION = "1.4.0";
 
     @Mod.Instance(MODID)
     public static SpartanFire INSTANCE;
@@ -25,14 +24,9 @@ public class SpartanFire {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        if (CompatLoadUtil.isRLCombatLoaded()) {
+        if(CompatLoadUtil.isRLCombatLoaded()) {
             MinecraftForge.EVENT_BUS.register(RLCombatCompat.class);
         }
-        MinecraftForge.EVENT_BUS.register(PROXY);
-    }
-
-    @EventHandler
-    public void init(FMLInitializationEvent event) {
-        PROXY.init(event);
+        SpartanFire.PROXY.preInit();
     }
 }

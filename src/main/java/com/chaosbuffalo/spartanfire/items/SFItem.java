@@ -6,7 +6,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class SFItem extends Item {
 
-    public SFItem(ResourceLocation registryName, CreativeTabs tab){
+    public SFItem(ResourceLocation registryName, CreativeTabs tab) {
         setRegistryName(registryName);
         setTranslationKey(registryName.getPath());
         setCreativeTab(tab);

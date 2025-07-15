@@ -7,19 +7,23 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(SlotArrow.class)
-public class SlotArrowMixin extends SlotItemHandler {
-
+public abstract class SlotArrowMixin extends SlotItemHandler {
+    
     public SlotArrowMixin(IItemHandler itemHandler, int index, int xPosition, int yPosition) {
         super(itemHandler, index, xPosition, yPosition);
     }
-
-    @Override
-    public boolean isItemValid(ItemStack stack) {
-        if (stack.getItem() instanceof ItemArrow || stack.getItem() instanceof ItemDragonArrow) {
-            return super.isItemValid(stack);
-        }
-        return false;
+    
+    @Inject(
+            method = "isItemValid",
+            at = @At("HEAD"),
+            cancellable = true
+    )
+    private void spartanFire_spartanWeaponrySlotArrow_isItemValid(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
+        cir.setReturnValue((stack.getItem() instanceof ItemArrow || stack.getItem() instanceof ItemDragonArrow) && super.isItemValid(stack));
     }
 }
