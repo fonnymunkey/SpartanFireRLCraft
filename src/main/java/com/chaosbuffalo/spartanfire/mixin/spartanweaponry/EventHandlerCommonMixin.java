@@ -2,7 +2,6 @@ package com.chaosbuffalo.spartanfire.mixin.spartanweaponry;
 
 import com.chaosbuffalo.spartanfire.enums.EnumMaterial;
 import com.chaosbuffalo.spartanfire.items.ItemDragonBolt;
-import com.github.alexthe666.iceandfire.item.IafItemRegistry;
 import com.github.alexthe666.iceandfire.item.ItemDragonArrow;
 import com.github.alexthe666.iceandfire.item.ItemDragonBow;
 import com.llamalad7.mixinextras.sugar.Local;
@@ -47,7 +46,7 @@ public abstract class EventHandlerCommonMixin {
             }
         }
         else if(bowStack.getItem() instanceof ItemBow) {
-            boolean dragonBow = bowStack.getItem().equals(IafItemRegistry.dragonbone_bow)
+            boolean dragonBow = bowStack.getItem() instanceof ItemDragonBow
                     || bowStack.getItem().equals(EnumMaterial.DRAGONBONE.longbow)
                     || bowStack.getItem().equals(EnumMaterial.FIRE_DRAGONBONE.longbow)
                     || bowStack.getItem().equals(EnumMaterial.ICE_DRAGONBONE.longbow)
