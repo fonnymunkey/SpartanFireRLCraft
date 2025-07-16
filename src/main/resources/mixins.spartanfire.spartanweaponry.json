@@ -11,6 +11,8 @@
     "spartanweaponry.ItemLongbowMixin",
     "spartanweaponry.ItemQuiverArrowMixin",
     "spartanweaponry.ItemQuiverBoltMixin",
+    "spartanweaponry.QuiverHelperArrowMixin",
+    "spartanweaponry.QuiverHelperBoltMixin",
     "spartanweaponry.SlotArrowMixin",
     "spartanweaponry.SlotBoltMixin"
   ],

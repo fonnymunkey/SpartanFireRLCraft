@@ -37,10 +37,10 @@ public abstract class EventHandlerCommonMixin {
                     || bowStack.getItem().equals(EnumMaterial.ICE_DRAGONBONE.crossbow)
                     || bowStack.getItem().equals(EnumMaterial.LIGHTNING_DRAGONBONE.crossbow);
             for(int j = 0; j < quiverHandler.getSlots(); j++) {
-                ItemStack boltStack = quiverHandler.extractItem(j, 64, false);
+                ItemStack boltStack = quiverHandler.extractItem(j, 64, true);
                 if(boltStack.getItem() instanceof ItemBolt || boltStack.getItem() instanceof ItemDragonBolt) {
                     if(dragonCrossbow || !ItemDragonBolt.isDragonboneBolt(boltStack)) {
-                        player.setItemStackToSlot(oppositeHandSlot, boltStack);
+                        player.setItemStackToSlot(oppositeHandSlot, quiverHandler.extractItem(j, 64, false));
                         break;
                     }
                 }
@@ -53,10 +53,10 @@ public abstract class EventHandlerCommonMixin {
                     || bowStack.getItem().equals(EnumMaterial.ICE_DRAGONBONE.longbow)
                     || bowStack.getItem().equals(EnumMaterial.LIGHTNING_DRAGONBONE.longbow);
             for(int j = 0; j < quiverHandler.getSlots(); j++) {
-                ItemStack arrowStack = quiverHandler.extractItem(j, 64, false);
+                ItemStack arrowStack = quiverHandler.extractItem(j, 64, true);
                 if(arrowStack.getItem() instanceof ItemArrow || arrowStack.getItem() instanceof ItemDragonArrow) {
                     if(dragonBow || !ItemDragonBow.isDragonboneArrow(arrowStack)) {
-                        player.setItemStackToSlot(oppositeHandSlot, arrowStack);
+                        player.setItemStackToSlot(oppositeHandSlot, quiverHandler.extractItem(j, 64, false));
                         break;
                     }
                 }
